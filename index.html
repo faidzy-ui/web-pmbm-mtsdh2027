@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <link rel="icon" type="image/png" href="logo_pmbm.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penerimaan Murid Baru Madrasah Tahun Ajaran 2027/2028</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo_pmbm.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,10 +66,6 @@
         .bg-islamic {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4H6zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
         @keyframes pulse-badge {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -75,12 +73,6 @@
         @keyframes marquee {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
-        }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-        .animate-float-delayed {
-            animation: float 5s ease-in-out infinite 2s;
         }
         .animate-pulse-badge {
             animation: pulse-badge 2s ease-in-out infinite;
@@ -126,7 +118,7 @@
                     lokasi: "Pamulang",
                     tahunAjaran: "2027/2028",
                     akreditasi: "Terakreditasi A",
-                    logo: "logo_mts.png" 
+                    logo: "logo_pmbm.png" 
                 },
                 
                 hero: {
@@ -139,8 +131,8 @@
                     yayasan: "Yayasan Daarul Hikmah Pamulang",
                     madrasah: "MTs. Daarul Hikmah",
                     logoPmbm: "logo_pmbm.png",
-                    fotoPendiri: "kh_saidih.jpg",
-                    fotoSiswa: "siswi_buku.jpeg",
+                    fotoPendiri: "sambut_siswa2.jpeg",
+                    fotoSiswa: "sambut_siswa1.jpeg",
                     judulUtama: "Penerimaan Murid Baru Madrasah",
                     subJudul: "Tahun Ajaran 2027/2028",
                     tema: "\"Membentuk Generasi Bertaqwa, Berprestasi, Hidup Sehat, Kreatif, Berakhlak Mulia Berbasis Cinta\"",
@@ -686,7 +678,7 @@
     </script>
 
     <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-40 flex flex-col gap-2 md:gap-3 scale-[0.85] md:scale-100 origin-bottom-left">
-        <div class="bg-gradient-to-r from-accent-500 to-amber-400 text-primary-950 font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white animate-float cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
+        <div class="bg-gradient-to-r from-accent-500 to-amber-400 text-primary-950 font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
             <i class="fa-solid fa-fire text-base md:text-lg text-rose-600 animate-bounce"></i>
             <div>
                 <p class="text-[10px] md:text-xs font-extrabold uppercase tracking-wide">Dapatkan Diskon Menarik!</p>
@@ -694,7 +686,7 @@
             </div>
         </div>
 
-        <div class="bg-primary-800 text-white font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white animate-float-delayed cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
+        <div class="bg-primary-800 text-white font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
             <i class="fa-solid fa-paper-plane text-accent-400 text-base md:text-lg"></i>
             <div>
                 <p class="text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent-300">Let's Join Us!</p>
@@ -854,19 +846,17 @@
                  :style="`background-image: url('${img}')`"></div>
         </template>
         
-        <!-- Seamless Embedded Photos on Left & Right background edges without boxes/captions -->
-        <div class="absolute left-0 top-0 bottom-0 w-1/5 md:w-1/4 hidden xl:block pointer-events-none opacity-25 overflow-hidden">
-            <img :src="hero.fotoPendiri" alt="Tokoh Pendiri" class="w-full h-full object-cover filter grayscale contrast-125">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-gray-900/50 to-gray-900"></div>
-        </div>
-        <div class="absolute right-0 top-0 bottom-0 w-1/5 md:w-1/4 hidden xl:block pointer-events-none opacity-25 overflow-hidden">
-            <img :src="hero.fotoSiswa" alt="Siswa Siswi" class="w-full h-full object-cover filter grayscale contrast-125">
-            <div class="absolute inset-0 bg-gradient-to-l from-transparent via-gray-900/50 to-gray-900"></div>
-        </div>
-
         <div class="absolute inset-0 bg-primary-900/75 mix-blend-multiply"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/80 to-transparent opacity-90"></div>
         
+        <!-- Foreground Founder & Student Photos (Left & Right, NO BORDERS, NO POPUP, NO CAPTIONS) -->
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-44 lg:w-60 hidden xl:block z-20 pointer-events-none opacity-90 shadow-2xl">
+            <img :src="hero.fotoPendiri" alt="Tokoh Pendiri" class="w-full h-80 lg:h-96 object-cover">
+        </div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-44 lg:w-60 hidden xl:block z-20 pointer-events-none opacity-90 shadow-2xl">
+            <img :src="hero.fotoSiswa" alt="Siswa Siswi" class="w-full h-80 lg:h-96 object-cover">
+        </div>
+
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             
             <div class="text-center max-w-4xl mx-auto mb-8">
@@ -883,7 +873,7 @@
                 </div>
                 
                 <div class="relative inline-block max-w-5xl mx-auto">
-                    <div class="absolute -top-12 right-0 sm:-right-4 md:-top-14 md:-right-8 z-20 animate-float cursor-pointer hover:scale-110 transition-transform" onclick="location.href='#biaya'">
+                    <div class="absolute -top-12 right-0 sm:-right-4 md:-top-14 md:-right-8 z-20 cursor-pointer hover:scale-110 transition-transform" onclick="location.href='#biaya'">
                         <div class="relative bg-gradient-to-r from-emerald-500 to-teal-400 text-white px-3.5 py-2 rounded-2xl shadow-2xl border-2 border-white rotate-6">
                             <div class="absolute -bottom-2.5 left-6 w-4 h-4 bg-teal-400 rotate-45 border-r-2 border-b-2 border-white"></div>
                             <div class="relative z-10 flex items-center gap-2">
