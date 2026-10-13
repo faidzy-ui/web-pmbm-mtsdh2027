@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penerimaan Murid Baru Madrasah Tahun Ajaran 2027/2028</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+
+    <!-- Error Handler -->
+    <script>
+        window.addEventListener('unhandledrejection', event => {
+            if (event.reason && event.reason.isFromCancelledTransition) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        accent: {
+                            400: '#facc15',
+                            500: '#eab308',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .bg-islamic {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4H6zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 5s ease-in-out infinite 2s;
+        }
+        .animate-pulse-badge {
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased" x-data="websiteData()">
+
+    <script>
+        function websiteData() {
+            return {
+                sekolah: {
+                    namaSingkat: "MTs Daarul Hikmah",
+                    tagline: "Daarul Hikmah... Sehat, Hebat, Bermartabat!",
+                    taglineNavbar: "Sehat, Hebat, Bermartabat!",
+                    lokasi: "Pamulang",
+                    tahunAjaran: "2027/2028",
+                    akreditasi: "Terakreditasi A",
+                    logo: "logo_pmbm.jpg" 
+                },
+                
+                hero: {
+                    bgImage: "kopral_2.jpg",
+                    yayasan: "Yayasan Daarul Hikmah Pamulang",
+                    madrasah: "MTs. Daarul Hikmah",
+                    label: "PENERIMAAN MURID BARU MADRASAH (PMBM)",
+                    judulUtama: "Penerimaan Murid Baru Madrasah",
+                    subJudul: "Tahun Ajaran 2027/2028",
+                    tema: "\"Membentuk Generasi Bertaqwa, Berprestasi, Hidup Sehat, Kreatif, Berakhlak Mulia Berbasis Cinta\"",
+                    mottoArab: "المُحَافَظَةُ عَلَى القَدِيْمِ الصَّالِحِ وَالأَخْذُ بِالجَدِيْدِ الأَصْلَحِ",
+                    mottoTerjemahan: "(Memelihara tradisi lama yang baik, dan mengambil hal baru yang lebih baik)",
+                    tombolDaftar: "Hubungi Kami",
+                    pengumumanRuningText: "Pendaftaran Murid Baru Madrasah (PMBM) Tahun Ajaran 2027/2028 Telah Dibuka! Ayo Segera Daftar!",
+                },
+
+                visiMisi: {
+                    judul: "Visi & Misi Madrasah",
+                    visi: "Terwujudnya generasi bertaqwa, berprestasi, hidup sehat, kreatif, berakhlak mulia (BERKAH) Berbasis Cinta.",
+                    misi: [
+                        "Menanamkan keimanan, ketakwaan, dan akhlakul karimah melalui pembiasaan ibadah dan keteladanan.",
+                        "Menyelenggarakan pembelajaran yang bermutu, inovatif, dan berpusat pada peserta didik.",
+                        "Mengembangkan budaya hidup sehat, bersih, dan asri.",
+                        "Mewujudkan lingkungan belajar yang aman dan nyaman.",
+                        "Mengembangkan potensi, bakat, dan keterampilan peserta didik sesuai minat dan perkembangan zaman.",
+                        "Menumbuhkan budaya CINTA sebagai landasan pembentukan karakter Islami peserta didik."
+                    ]
+                },
+
+                judulUnggulan: "Program Unggulan",
+                deskripsiUnggulan: "Program khusus yang membekali murid dengan kompetensi keagamaan dan pembentukan karakter akhlakul karimah.",
+                programUnggulan: [
+                    {
+                        nama: "Tahfidzul Qur'an",
+                        icon: "fa-solid fa-book-quran",
+                        deskripsi: "Program pembinaan hafalan Al-Qur'an secara intensif dengan metode setoran dan muraja'ah terbimbing.",
+                        warna: "text-emerald-600 bg-emerald-100"
+                    },
+                    {
+                        nama: "Tuntas BTQ",
+                        icon: "fa-solid fa-graduation-cap",
+                        deskripsi: "Bimbingan Baca Tulis Qur'an secara komprehensif hingga murid fasih dan benar dalam pelafalan ilmu tajwid.",
+                        warna: "text-blue-600 bg-blue-100"
+                    },
+                    {
+                        nama: "Tuntas ASWAJA",
+                        icon: "fa-solid fa-mosque",
+                        deskripsi: "Praktik ibadah harian lengkap dengan bacaannya, mulai dari Wudhu, salat, hingga Tahlil yang sesuai dengan pemahaman aqidah Ahlussunnah wal Jama'ah",
+                        warna: "text-amber-600 bg-amber-100"
+                    }
+                ],
+
+                judulKurikulum: "Program Kurikulum & Kelas",
+                deskripsiKurikulum: "Madrasah kami menerapkan Kurikulum Nasional Kemenag yang diintegrasikan secara inovatif melalui pendekatan KBC (Kurikulum Berbasis Cinta) dan metode Deep Learning, serta terbagi ke dalam pilihan kelas berikut:",
+                programKelas: [
+                    {
+                        nama: "Kelas Reguler",
+                        icon: "fa-solid fa-users",
+                        deskripsi: "Fokus pada pengembangan akademik standar nasional, kemandirian, kedisiplinan, serta pembentukan karakter positif dan beradab.",
+                        target: "Kurikulum Nasional & Karakter",
+                        warnaBorder: "border-blue-100 hover:border-blue-400",
+                        iconWarna: "text-blue-600 bg-blue-100"
+                    },
+                    {
+                        nama: "Kelas Takhassus (Tahfidz)",
+                        icon: "fa-solid fa-book-quran",
+                        deskripsi: "Kelas intensif yang dirancang khusus bagi murid dengan minat tinggi dalam menghafal Al-Qur'an. Dilengkapi dengan pendampingan halaqah khusus ziyadah dan muraja'ah.",
+                        target: "Target Hafalan: Minimal 3-5 Juz",
+                        warnaBorder: "border-emerald-100 hover:border-emerald-500",
+                        iconWarna: "text-emerald-600 bg-emerald-100"
+                    }
+                ],
+
+                judulFasilitas: "Fasilitas Pendukung",
+                deskripsiFasilitas: "Menyediakan sarana dan prasarana yang representatif untuk menunjang kenyamanan dan efektivitas proses belajar mengajar.",
+                fasilitas: [
+                    { 
+                        nama: "Laboratorium Komputer & IPA", 
+                        deskripsi: "Laboratorium yang representatif untuk praktikum sains dan literasi digital.", 
+                        icon: "fa-solid fa-laptop-code", 
+                        warna: "text-blue-600 bg-blue-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "WhatsApp Image 2026-10-05 at 7.20.55 AM.jpg", caption: "Praktikum Komputer" },
+                            { url: "https://placehold.co/800x450/2563eb/ffffff?text=Laboratorium+IPA", caption: "Alat Peraga Sains" }
+                        ]
+                    },
+                    { 
+                        nama: "Perpustakaan", 
+                        deskripsi: "Koleksi buku lengkap untuk menunjang minat baca dan riset mandiri murid.", 
+                        icon: "fa-solid fa-book-open-reader", 
+                        warna: "text-emerald-600 bg-emerald-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "https://placehold.co/800x450/059669/ffffff?text=Ruang+Baca+Perpustakaan", caption: "Suasana Ruang Baca Nyaman" },
+                            { url: "https://placehold.co/800x450/10b981/ffffff?text=Koleksi+Buku", caption: "Rak Buku Referensi Lengkap" }
+                        ]
+                    },
+                    { 
+                        nama: "Sarana Olahraga", 
+                        deskripsi: "Area dan peralatan olahraga untuk menjaga kesehatan fisik murid.", 
+                        icon: "fa-solid fa-basketball", 
+                        warna: "text-amber-600 bg-amber-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "WhatsApp Image 2026-10-05 at 7.20.55 AM.jpg", caption: "Lapangan Utama & Upacara" },
+                            { url: "https://placehold.co/800x450/d97706/ffffff?text=Sarana+Futsal+Badminton", caption: "Area Olahraga Murid" }
+                        ]
+                    },
+                    { 
+                        nama: "Sarana Ibadah (Masjid)", 
+                        deskripsi: "Masjid yang luas dan nyaman untuk pembiasaan ibadah berjamaah.", 
+                        icon: "fa-solid fa-mosque", 
+                        warna: "text-teal-600 bg-teal-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "WhatsApp Image 2026-10-05 at 7.20.55 AM.jpg", caption: "Menara & Kompleks Masjid Madrasah" },
+                            { url: "https://placehold.co/800x450/0d9488/ffffff?text=Aula+Sholat+Berjamaah", caption: "Ruang Utama Sholat" }
+                        ]
+                    },
+                    { 
+                        nama: "Aula Pertemuan", 
+                        deskripsi: "Ruang serbaguna untuk kegiatan pertemuan, seminar, dan acara madrasah.", 
+                        icon: "fa-solid fa-building-columns", 
+                        warna: "text-purple-600 bg-purple-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "https://placehold.co/800x450/7c3aed/ffffff?text=Aula+Serbaguna", caption: "Ruang Pertemuan Utama" },
+                            { url: "https://placehold.co/800x450/8b5cf6/ffffff?text=Acara+Seminar+Madrasah", caption: "Kegiatan Seminar & Wisuda" }
+                        ]
+                    },
+                    { 
+                        nama: "Area Parkir", 
+                        deskripsi: "Area parkir kendaraan yang luas, aman, dan tertata rapi.", 
+                        icon: "fa-solid fa-square-parking", 
+                        warna: "text-rose-600 bg-rose-100",
+                        activeSlide: 0,
+                        fotos: [
+                            { url: "https://placehold.co/800x450/e11d48/ffffff?text=Area+Parkir+Luas", caption: "Area Parkir Kendaraan" },
+                            { url: "https://placehold.co/800x450/f43f5e/ffffff?text=Gerbang+Aman", caption: "Pos Penjagaan & Keamanan" }
+                        ]
+                    }
+                ],
+
+                judulEkskul: "Program Ekstrakurikuler",
+                deskripsiEkskul: "Wadah pengembangan minat dan bakat murid untuk menghadapi tantangan masa depan.",
+                ekstrakurikuler: [
+                    { nama: "Pramuka", icon: "fa-solid fa-campground", warna: "text-amber-600 bg-amber-100" },
+                    { nama: "Pencak Silat", icon: "fa-solid fa-user-ninja", warna: "text-red-600 bg-red-100" },
+                    { nama: "Futsal", icon: "fa-solid fa-futbol", warna: "text-blue-600 bg-blue-100" },
+                    { nama: "Badminton", icon: "fa-solid fa-table-tennis-paddle-ball", warna: "text-emerald-600 bg-emerald-100" },
+                    { nama: "Tenis Meja", icon: "fa-solid fa-table-tennis", warna: "text-purple-600 bg-purple-100" },
+                    { nama: "Tari Nusantara", icon: "fa-solid fa-masks-theater", warna: "text-pink-600 bg-pink-100" },
+                    { nama: "Tari Ratoh Jaroe", icon: "fa-solid fa-hands-clapping", warna: "text-indigo-600 bg-indigo-100" },
+                    { nama: "Tilawah", icon: "fa-solid fa-microphone-lines", warna: "text-teal-600 bg-teal-100" },
+                    { nama: "Marawis", icon: "fa-solid fa-drum", warna: "text-orange-600 bg-orange-100" },
+                    { nama: "Kaligrafi", icon: "fa-solid fa-pen-nib", warna: "text-cyan-600 bg-cyan-100" },
+                    { nama: "Angklung", icon: "fa-solid fa-music", warna: "text-yellow-600 bg-yellow-100" },
+                    { nama: "Panahan", icon: "fa-solid fa-bullseye", warna: "text-rose-600 bg-rose-100" }
+                ],
+
+                prestasi: [
+                    {
+                        nama: "Juara 1 Putra Kejuaraan Pencak Silat Paku Bumi",
+                        tingkat: "Tingkat Nasional",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Kontingen Pencak Silat Madrasah",
+                        icon: "fa-solid fa-trophy",
+                        warna: "text-amber-500 bg-amber-50 border-amber-200"
+                    },
+                    {
+                        nama: "Juara 2 & 3 Pencak Silat Martial Art Competition",
+                        tingkat: "Tingkat Nasional",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Kontingen Pencak Silat Madrasah",
+                        icon: "fa-solid fa-medal",
+                        warna: "text-blue-500 bg-blue-50 border-blue-200"
+                    },
+                    {
+                        nama: "Juara 1 Futsal (Khazax Festival)",
+                        tingkat: "Tingkat JABODETABEK",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Tim Futsal MTs Daarul Hikmah",
+                        icon: "fa-solid fa-futbol",
+                        warna: "text-emerald-500 bg-emerald-50 border-emerald-200"
+                    },
+                    {
+                        nama: "Juara 2 Badminton Ganda Putra World Culture Festival",
+                        tingkat: "Tingkat JABODETABEK",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Tim Badminton Madrasah",
+                        icon: "fa-solid fa-table-tennis-paddle-ball",
+                        warna: "text-purple-500 bg-purple-50 border-purple-200"
+                    },
+                    {
+                        nama: "Juara 2 Lomba Kaligrafi",
+                        tingkat: "Tingkat JABODETABEK",
+                        kategori: "keagamaan",
+                        tahun: "2025/2026",
+                        pemenang: "Perwakilan Murid Kaligrafi",
+                        icon: "fa-solid fa-pen-nib",
+                        warna: "text-teal-500 bg-teal-50 border-teal-200"
+                    },
+                    {
+                        nama: "Juara 1 Kaligrafi & Pidato Bhs. Indonesia O2SM",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Perwakilan Murid Berprestasi",
+                        icon: "fa-solid fa-star",
+                        warna: "text-rose-500 bg-rose-50 border-rose-200"
+                    },
+                    {
+                        nama: "Juara 3 Pionering Puteri Perbalang",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Tim Pramuka Putri",
+                        icon: "fa-solid fa-campground",
+                        warna: "text-orange-500 bg-orange-50 border-orange-200"
+                    },
+                    {
+                        nama: "Juara 1 PBB Putera Perbalang",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "non-akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Tim PBB Putra",
+                        icon: "fa-solid fa-person-military-pointing",
+                        warna: "text-blue-600 bg-blue-50 border-blue-200"
+                    },
+                    {
+                        nama: "Juara 1 Olimpiade Bahasa Inggris (OSSO)",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Perwakilan Murid Unggulan",
+                        icon: "fa-solid fa-language",
+                        warna: "text-indigo-500 bg-indigo-50 border-indigo-200"
+                    },
+                    {
+                        nama: "Juara 1 Pidato Bahasa Indonesia (OSSO)",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "akademik",
+                        tahun: "2025/2026",
+                        pemenang: "Perwakilan Murid Unggulan",
+                        icon: "fa-solid fa-microphone-lines",
+                        warna: "text-emerald-600 bg-emerald-50 border-emerald-200"
+                    },
+                    {
+                        nama: "Juara MTQ Putra (OSSO)",
+                        tingkat: "Tingkat Kota Tangsel",
+                        kategori: "keagamaan",
+                        tahun: "2025/2026",
+                        pemenang: "Perwakilan Murid Tahfidz & Tilawah",
+                        icon: "fa-solid fa-book-quran",
+                        warna: "text-amber-600 bg-amber-50 border-amber-200"
+                    }
+                ],
+
+                biaya: {
+                    kategori: [
+                        {
+                            no: "1",
+                            nama: "Biaya Pokok/Pendaftaran",
+                            jumlahPutra: "Rp 2,275,000",
+                            jumlahPutri: "Rp 2,275,000",
+                            rincian: [
+                                { nama: "Kartu Pelajar", putra: "Rp 30,000", putri: "Rp 30,000" },
+                                { nama: "Foto", putra: "Rp 30,000", putri: "Rp 30,000" },
+                                { nama: "Post Test", putra: "Rp 170,000", putri: "Rp 170,000" },
+                                { nama: "MATAMUDA", putra: "Rp 150,000", putri: "Rp 150,000" },
+                                { nama: "SOL", putra: "Rp 450,000", putri: "Rp 450,000" },
+                                { nama: "Buku paket agama", putra: "Rp 450,000", putri: "Rp 450,000" },
+                                { nama: "Buku pedoman Aswaja", putra: "Rp 50,000", putri: "Rp 50,000" },
+                                { nama: "Buku pedoman BTQ Tarsana", putra: "Rp 30,000", putri: "Rp 30,000" },
+                                { nama: "Buku Rapor", putra: "Rp 150,000", putri: "Rp 150,000" },
+                                { nama: "SPP + Tabungan", putra: "Rp 265,000", putri: "Rp 265,000" },
+                                { nama: "Biaya gedung", putra: "Rp 500,000", putri: "Rp 500,000" }
+                            ]
+                        },
+                        {
+                            no: "2",
+                            nama: "Kegiatan 1 Tahun",
+                            jumlahPutra: "Rp 1,400,000",
+                            jumlahPutri: "Rp 1,400,000",
+                            rincian: [
+                                { nama: "Kegiatan sanlat ramadhan", putra: "Rp 50,000", putri: "Rp 50,000" },
+                                { nama: "Kegiatan kesiswaan", putra: "Rp 400,000", putri: "Rp 400,000" },
+                                { nama: "Kurban", putra: "Rp 150,000", putri: "Rp 150,000" },
+                                { nama: "Biaya semester 1 tahun", putra: "Rp 400,000", putri: "Rp 400,000" },
+                                { nama: "Buku LKS 1 tahun", putra: "Rp 400,000", putri: "Rp 400,000" }
+                            ]
+                        },
+                        {
+                            no: "3",
+                            nama: "Seragam",
+                            jumlahPutra: "Rp 1,070,000",
+                            jumlahPutri: "Rp 1,240,000",
+                            rincian: [
+                                { nama: "Gesper", putra: "Rp 35,000", putri: "Rp -" },
+                                { nama: "Badge+dasi", putra: "Rp 70,000", putri: "Rp 40,000" },
+                                { 
+                                    nama: "Seragam + Almamater", 
+                                    putra: "Rp 965,000", 
+                                    putri: "Rp 1,200,000",
+                                    ketPutra: "Baju batik, baju muslim, celana biru, seragam pramuka, dan setelan olahraga (termasuk kaos kaki dan badge pramuka).",
+                                    ketPutri: "Baju batik, baju muslimah, seragam pramuka, setelan olahraga, baju kurung putih, rok biru, kerudung putih dan biru (termasuk kaos kaki dan badge pramuka)."
+                                }
+                            ]
+                        }
+                    ],
+                    totalPutra: "Rp 4,745,000",
+                    totalPutri: "Rp 4,915,000"
+                },
+
+                galeri: {
+                    judul: "Galeri Kegiatan",
+                    deskripsi: "Intip berbagai keseruan dan aktivitas positif di MTs Daarul Hikmah.",
+                    items: [
+                        { tipe: "foto", url: "sambut_siswa1.jpg", caption: "Menyambut Kedatangan Murid oleh Kepala Madrasah & Dewan Guru" },
+                        { tipe: "foto", url: "sambut_siswa2.jpg", caption: "Menyambut Murid dengan Senyuman" },
+                        { tipe: "foto", url: "kopral_1", caption: "Kegiatan Kepanduan Pramuka" },
+                        { tipe: "foto", url: "kopral_2", caption: "Kegiatan Kopral Tahun 2026" },
+                        { tipe: "video", url: "https://drive.google.com/file/d/1TyUa2Gu8JGcO-HN-sBVCJznOe0SCXBhA/preview", caption: "Keseruan Kegiatan Kopral Tahun 2026" },
+                        { tipe: "foto", url: "tahfiz_1", caption: "Kegiatan Halaqah Tahfidz" },
+                        { tipe: "foto", url: "tahfiz_2", caption: "Kegiatan Muroja'ah di bawah Rindangnya Pepohonan" },
+                        { tipe: "foto", url: "belajar_1", caption: "Pembelajaran dengan Multimedia" }
+                    ]
+                },
+
+                syaratPendaftaran: [
+                    "Mengisi formulir pendaftaran",
+                    "Fotokopi Ijazah / Surat Keterangan Lulus (SKL) SD/MI yang dilegalisir (2 lembar)",
+                    "Fotokopi Akta Kelahiran & Kartu Keluarga (KK) (2 lembar)",
+                    "Fotokopi NISN dan Rapor Kelas 5 - 6",
+                    "Fotokopi KTP Orang tua/Wali"
+                ],
+
+                judulJadwal: "Jadwal Pendaftaran",
+                jadwal: [
+                    { 
+                        gelombang: "Gelombang 1", 
+                        tanggal: "2 November 2026 - 5 Februari 2027", 
+                        tes: "6-7 Februari 2027",
+                        status: "aktif" 
+                    },
+                    { 
+                        gelombang: "Gelombang 2", 
+                        tanggal: "1 Februari 2027 - 30 April 2027", 
+                        tes: "10 Mei 2027",
+                        status: "menunggu" 
+                    }
+                ],
+
+                infoTempatDaftar: "Pendaftaran dapat dilakukan langsung di Sekretariat PMBM / Kantor TU MTs. Daarul Hikmah setiap hari kerja pukul 08.00 s.d. 15.00 WIB atau dapat menghubungi kontak panitia.",
+
+                kontak: {
+                    alamat: "Jl. Surya Kencana No. 24 Pamulang Barat, Kec. Pamulang, Kota Tangerang Selatan, Banten Kode POS 15435",
+                    namaKontak1: "Admin 1",
+                    waLink1: "https://wa.me/6280000000000",
+                    namaKontak2: "Admin 2",
+                    waLink2: "https://wa.me/6280000000000",
+                    email: "daahikppdb@gmail.com",
+                    namaInstagram: "Official MTs Daarul Hikmah Pamulang",
+                    igLink: "https://instagram.com/mts.daarulhikmah"
+                },
+
+                statistik: {
+                    totalPengunjung: "1,452"
+                },
+
+                mobileMenuOpen: false,
+                dropdownProgram: false,
+                dropdownInformasi: false
+            }
+        }
+    </script>
+
+    <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-40 flex flex-col gap-2 md:gap-3 scale-[0.85] md:scale-100 origin-bottom-left">
+        <div class="bg-gradient-to-r from-accent-500 to-amber-400 text-primary-950 font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white animate-float cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
+            <i class="fa-solid fa-fire text-base md:text-lg text-rose-600 animate-bounce"></i>
+            <div>
+                <p class="text-[10px] md:text-xs font-extrabold uppercase tracking-wide">Dapatkan Diskon Menarik!</p>
+                <p class="text-[9px] md:text-[11px] font-semibold text-primary-900">*Syarat & ketentuan berlaku</p>
+            </div>
+        </div>
+
+        <div class="bg-primary-800 text-white font-bold px-3 md:px-4 py-2 md:py-2.5 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-2.5 border-2 border-white animate-float-delayed cursor-pointer hover:scale-105 transition-transform" onclick="location.href='#kontak'">
+            <i class="fa-solid fa-paper-plane text-accent-400 text-base md:text-lg"></i>
+            <div>
+                <p class="text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent-300">Let's Join Us!</p>
+                <p class="text-[9px] md:text-[11px] font-medium text-gray-200">Ayo Buruan Daftar Sekarang!</p>
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <img :src="sekolah.logo" alt="Logo Madrasah" class="w-10 h-10 object-contain bg-white rounded-lg shadow-sm border border-gray-100">
+                    <div>
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span class="font-heading font-bold text-xl text-primary-800 block leading-none" x-text="sekolah.namaSingkat"></span>
+                            <span class="hidden sm:inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-300 whitespace-nowrap shadow-sm">
+                                <i class="fa-solid fa-award text-amber-600"></i>
+                                <span x-text="sekolah.akreditasi"></span>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-primary-600 font-medium leading-none" x-text="sekolah.taglineNavbar"></span>
+                            <span class="sm:hidden inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-amber-300 leading-none">
+                                <i class="fa-solid fa-award text-amber-600"></i>
+                                <span x-text="sekolah.akreditasi"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#beranda" class="text-gray-600 hover:text-primary-700 font-medium transition-colors">Beranda</a>
+                    <a href="#visimisi" class="text-gray-600 hover:text-primary-700 font-medium transition-colors">Profil</a>
+                    
+                    <div class="relative" @mouseleave="dropdownProgram = false">
+                        <button @click="dropdownProgram = !dropdownProgram" class="flex items-center gap-1.5 text-gray-600 hover:text-primary-700 font-medium transition-colors focus:outline-none py-2">
+                            <span>Program & Fasilitas</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform" :class="dropdownProgram ? 'rotate-180' : ''"></i>
+                        </button>
+
+                        <div x-show="dropdownProgram" 
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
+                             class="absolute top-full left-0 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 mt-1 z-50" x-cloak>
+                            <a @click="dropdownProgram = false" href="#unggulan" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-star text-primary-600 w-5 mr-2"></i> Program Unggulan</a>
+                            <a @click="dropdownProgram = false" href="#kurikulum" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-book text-primary-600 w-5 mr-2"></i> Kurikulum & Kelas</a>
+                            <a @click="dropdownProgram = false" href="#fasilitas" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-building text-primary-600 w-5 mr-2"></i> Fasilitas Pendukung</a>
+                            <a @click="dropdownProgram = false" href="#ekskul" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-people-group text-primary-600 w-5 mr-2"></i> Ekstrakurikuler</a>
+                        </div>
+                    </div>
+
+                    <div class="relative" @mouseleave="dropdownInformasi = false">
+                        <button @click="dropdownInformasi = !dropdownInformasi" class="flex items-center gap-1.5 text-gray-600 hover:text-primary-700 font-medium transition-colors focus:outline-none py-2">
+                            <span>Informasi PMBM</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform" :class="dropdownInformasi ? 'rotate-180' : ''"></i>
+                        </button>
+
+                        <div x-show="dropdownInformasi" 
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
+                             class="absolute top-full left-0 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 mt-1 z-50" x-cloak>
+                            <a @click="dropdownInformasi = false" href="#syarat" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-clipboard-list text-primary-600 w-5 mr-2"></i> Syarat Pendaftaran</a>
+                            <a @click="dropdownInformasi = false" href="#jadwal" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-regular fa-calendar-days text-primary-600 w-5 mr-2"></i> Jadwal Pendaftaran</a>
+                            <a @click="dropdownInformasi = false" href="#biaya" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-receipt text-primary-600 w-5 mr-2"></i> Rincian Biaya</a>
+                            <a @click="dropdownInformasi = false" href="#kontak" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-address-book text-primary-600 w-5 mr-2"></i> Kontak</a>
+                        </div>
+                    </div>
+
+                    <a href="#prestasi" class="text-gray-600 hover:text-primary-700 font-medium transition-colors">Prestasi</a>
+                    <a href="#galeri" class="text-gray-600 hover:text-primary-700 font-medium transition-colors">Galeri</a>
+                    <a href="#kontak" class="bg-primary-700 hover:bg-primary-800 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow hover:shadow-lg transform hover:-translate-y-0.5 animate-pulse-badge" x-text="hero.tombolDaftar">
+                    </a>
+                </div>
+
+                <div class="lg:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 hover:text-primary-700 p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                        <i class="fa-solid fa-xmark text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             class="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl max-h-[85vh] overflow-y-auto" 
+             x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a @click="mobileMenuOpen = false" href="#beranda" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50">Beranda</a>
+                <a @click="mobileMenuOpen = false" href="#visimisi" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50">Profil</a>
+                
+                <div class="px-4 py-2 font-semibold text-primary-700 text-xs uppercase tracking-wider mt-2">Program & Fasilitas</div>
+                <a @click="mobileMenuOpen = false" href="#unggulan" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Program Unggulan</a>
+                <a @click="mobileMenuOpen = false" href="#kurikulum" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Kurikulum & Kelas</a>
+                <a @click="mobileMenuOpen = false" href="#fasilitas" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Fasilitas Pendukung</a>
+                <a @click="mobileMenuOpen = false" href="#ekskul" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Ekstrakurikuler</a>
+
+                <div class="px-4 py-2 font-semibold text-primary-700 text-xs uppercase tracking-wider mt-2">Informasi PMBM</div>
+                <a @click="mobileMenuOpen = false" href="#syarat" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Syarat Pendaftaran</a>
+                <a @click="mobileMenuOpen = false" href="#jadwal" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Jadwal Pendaftaran</a>
+                <a @click="mobileMenuOpen = false" href="#biaya" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Rincian Biaya</a>
+                <a @click="mobileMenuOpen = false" href="#kontak" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Kontak Panitia</a>
+
+                <div class="pt-2"></div>
+                <a @click="mobileMenuOpen = false" href="#prestasi" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50">Prestasi</a>
+                <a @click="mobileMenuOpen = false" href="#galeri" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50">Galeri</a>
+                <a @click="mobileMenuOpen = false" href="#kontak" class="block px-4 py-3 text-center mt-4 bg-primary-700 text-white font-semibold rounded-lg shadow" x-text="hero.tombolDaftar"></a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700" :style="`background-image: url('${hero.bgImage}')`"></div>
+        <div class="absolute inset-0 bg-primary-900/70 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-900 to-transparent opacity-90"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <h3 class="text-lg md:text-xl text-primary-100 font-bold tracking-widest uppercase mb-2 drop-shadow-md" x-text="hero.yayasan"></h3>
+            <h2 class="text-4xl md:text-5xl font-heading font-black text-accent-400 mb-8 drop-shadow-xl uppercase" x-text="hero.madrasah"></h2>
+            
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-white mb-2 leading-tight max-w-5xl mx-auto" x-text="hero.judulUtama"></h1>
+            <p class="text-xl md:text-2xl text-white font-bold mb-6 tracking-wide" x-text="hero.subJudul"></p>
+            
+            <p class="text-base md:text-lg text-primary-100 font-medium mb-10 max-w-3xl mx-auto italic drop-shadow-md" x-text="hero.tema"></p>
+            
+            <div class="max-w-3xl mx-auto mb-8 bg-black/20 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md">
+                <p class="text-3xl md:text-4xl text-accent-400 font-bold mb-4 leading-relaxed" dir="rtl" style="font-family: 'Traditional Arabic', 'Amiri', serif;" x-text="hero.mottoArab"></p>
+                <p class="text-primary-100 text-sm md:text-base font-light" x-text="hero.mottoTerjemahan"></p>
+            </div>
+
+            <div class="max-w-4xl mx-auto py-2.5 px-6 rounded-full bg-gradient-to-r from-accent-400 to-amber-500 border border-amber-300 text-primary-950 text-sm md:text-base font-extrabold tracking-wider shadow-2xl marquee-container">
+                <div class="marquee-content flex items-center gap-8">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-bullhorn text-rose-600"></i> <span x-text="hero.pengumumanRuningText + ' ✨ ' + sekolah.tagline"></span></span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-bullhorn text-rose-600"></i> <span x-text="hero.pengumumanRuningText + ' ✨ ' + sekolah.tagline"></span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-primary-800 text-white relative shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-1">
+                    <span class="bg-accent-400 text-primary-950 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Penerimaan Murid Baru</span>
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold mb-3">Informasi Utama PMBM</h3>
+                    <p class="text-primary-100 text-sm leading-relaxed">Pendaftaran Tahun Ajaran 2027/2028 kini telah dibuka. Mari bergabung bersama madrasah berprestasi dan berkarakter Islami.</p>
+                </div>
+                <div class="lg:col-span-2 grid sm:grid-cols-3 gap-4">
+                    <a href="#syarat" class="bg-white/10 hover:bg-white/20 transition-all border border-white/20 p-5 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-accent-400 text-primary-950 flex items-center justify-center text-lg font-bold mb-3 shadow">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-400 transition-colors">Syarat Pendaftaran</h4>
+                            <p class="text-xs text-primary-200">Lihat dokumen & berkas yang harus disiapkan.</p>
+                        </div>
+                        <span class="mt-4 text-xs font-bold text-accent-400 inline-flex items-center gap-1">Pelajari <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="#jadwal" class="bg-white/10 hover:bg-white/20 transition-all border border-white/20 p-5 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-accent-400 text-primary-950 flex items-center justify-center text-lg font-bold mb-3 shadow">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-400 transition-colors">Jadwal & Gelombang</h4>
+                            <p class="text-xs text-primary-200">Cek tanggal penting & waktu tes seleksi.</p>
+                        </div>
+                        <span class="mt-4 text-xs font-bold text-accent-400 inline-flex items-center gap-1">Pelajari <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="#biaya" class="bg-white/10 hover:bg-white/20 transition-all border border-white/20 p-5 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-accent-400 text-primary-950 flex items-center justify-center text-lg font-bold mb-3 shadow">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-400 transition-colors">Rincian Biaya</h4>
+                            <p class="text-xs text-primary-200">Transparansi biaya pokok, kegiatan, & seragam.</p>
+                        </div>
+                        <span class="mt-4 text-xs font-bold text-accent-400 inline-flex items-center gap-1">Pelajari <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visimisi" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3" x-text="sekolah.tagline"></span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="visiMisi.judul"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto">
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <div class="bg-primary-700 rounded-3xl p-8 lg:p-10 text-center shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
+                        <div class="absolute inset-0 bg-islamic opacity-10"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-accent-400/20 text-accent-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <h4 class="text-2xl font-heading font-bold text-white mb-6 uppercase tracking-wider">Visi</h4>
+                            <p class="text-xl md:text-2xl text-primary-50 font-medium leading-relaxed italic" x-text="visiMisi.visi"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-lg border border-gray-100 h-full">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <h4 class="text-2xl font-heading font-bold text-gray-800 uppercase tracking-wider">Misi</h4>
+                        </div>
+                        <ul class="space-y-5">
+                            <template x-for="(item, index) in visiMisi.misi" :key="index">
+                                <li class="flex items-start gap-4 group">
+                                    <div class="w-8 h-8 rounded-full bg-primary-50 text-primary-600 flex items-center justify-center font-bold flex-shrink-0 mt-0.5 group-hover:bg-primary-600 group-hover:text-white transition-colors shadow-sm" x-text="index + 1"></div>
+                                    <p class="text-gray-700 leading-relaxed text-sm md:text-base" x-text="item"></p>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="unggulan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3" x-text="sekolah.tagline"></span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="judulUnggulan"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600" x-text="deskripsiUnggulan"></p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <template x-for="(item, index) in programUnggulan" :key="index">
+                    <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all text-center flex flex-col items-center relative overflow-hidden group">
+                        <div class="absolute top-3 right-3 bg-accent-400 text-primary-950 text-[10px] font-bold px-2 py-0.5 rounded-full">Unggulan</div>
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:scale-110 transition-transform" :class="item.warna">
+                            <i :class="item.icon"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-gray-800 mb-3" x-text="item.nama"></h4>
+                        <p class="text-gray-600 text-sm leading-relaxed" x-text="item.deskripsi"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="kurikulum" class="py-20 bg-primary-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Kurikulum & Kelas</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="judulKurikulum"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 leading-relaxed" x-text="deskripsiKurikulum"></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <template x-for="(kelas, index) in programKelas" :key="index">
+                    <div class="bg-white rounded-3xl p-8 border-2 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl relative overflow-hidden" :class="kelas.warnaBorder">
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm" :class="kelas.iconWarna">
+                            <i :class="kelas.icon"></i>
+                        </div>
+                        <h4 class="text-2xl font-heading font-bold text-gray-800 mb-4" x-text="kelas.nama"></h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed" x-text="kelas.deskripsi"></p>
+                        <div class="inline-block bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">
+                            <span class="font-bold text-gray-800 text-sm" x-text="kelas.target"></span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="fasilitas" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Sarana & Prasarana</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="judulFasilitas"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600" x-text="deskripsiFasilitas"></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <template x-for="(fas, index) in fasilitas" :key="index">
+                    <div class="bg-white rounded-3xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col transition-all">
+                        
+                        <div class="relative aspect-video bg-gray-900 overflow-hidden group">
+                            <template x-for="(foto, fIndex) in fas.fotos" :key="fIndex">
+                                <div x-show="fas.activeSlide === fIndex"
+                                     x-transition:enter="transition ease-out duration-500"
+                                     x-transition:enter-start="opacity-0 scale-105"
+                                     x-transition:enter-end="opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-300"
+                                     x-transition:leave-start="opacity-100 scale-100"
+                                     x-transition:leave-end="opacity-0 scale-95"
+                                     class="absolute inset-0 w-full h-full">
+                                    <img :src="foto.url" :alt="foto.caption" class="w-full h-full object-cover">
+                                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
+                                        <p class="text-white text-xs md:text-sm font-medium text-center" x-text="foto.caption"></p>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <button @click="fas.activeSlide = (fas.activeSlide === 0) ? fas.fotos.length - 1 : fas.activeSlide - 1" 
+                                    class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none z-10">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button @click="fas.activeSlide = (fas.activeSlide === fas.fotos.length - 1) ? 0 : fas.activeSlide + 1" 
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none z-10">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+
+                            <div class="absolute bottom-2 right-2 flex gap-1 z-10 bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
+                                <template x-for="(foto, fIndex) in fas.fotos" :key="fIndex">
+                                    <button @click="fas.activeSlide = fIndex" 
+                                            :class="fas.activeSlide === fIndex ? 'w-3 bg-accent-400' : 'w-1.5 bg-white/60'"
+                                            class="h-1.5 rounded-full transition-all focus:outline-none"></button>
+                                </template>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 shadow-sm" :class="fas.warna">
+                                    <i :class="fas.icon"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-gray-800 text-lg" x-text="fas.nama"></h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed" x-text="fas.deskripsi"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="ekskul" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Pengembangan Diri</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="judulEkskul"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600" x-text="deskripsiEkskul"></p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+                <template x-for="(ekskul, index) in ekstrakurikuler" :key="index">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 text-center group transition-all hover:-translate-y-1">
+                        <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-2xl mb-4 transition-transform group-hover:scale-110" :class="ekskul.warna">
+                            <i :class="ekskul.icon"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-primary-600 transition-colors" x-text="ekskul.nama"></h4>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="prestasi" class="py-20 bg-white" x-data="{ tabAktif: 'semua' }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3" x-text="sekolah.tagline"></span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Prestasi Murid</h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600">Berbagai pencapaian gemilang yang diraih oleh murid-murid MTs Daarul Hikmah di berbagai bidang.</p>
+            </div>
+
+            <div class="flex justify-center gap-2 mb-12 flex-wrap">
+                <button @click="tabAktif = 'semua'" :class="tabAktif === 'semua' ? 'bg-primary-700 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-6 py-2.5 rounded-full font-medium text-sm transition-all focus:outline-none">Semua Prestasi</button>
+                <button @click="tabAktif = 'keagamaan'" :class="tabAktif === 'keagamaan' ? 'bg-primary-700 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-6 py-2.5 rounded-full font-medium text-sm transition-all focus:outline-none">Keagamaan & Tahfidz</button>
+                <button @click="tabAktif = 'non-akademik'" :class="tabAktif === 'non-akademik' ? 'bg-primary-700 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-6 py-2.5 rounded-full font-medium text-sm transition-all focus:outline-none">Seni & Olahraga</button>
+                <button @click="tabAktif = 'akademik'" :class="tabAktif === 'akademik' ? 'bg-primary-700 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-6 py-2.5 rounded-full font-medium text-sm transition-all focus:outline-none">Akademik</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <template x-for="(item, index) in prestasi" :key="index">
+                    <div x-show="tabAktif === 'semua' || item.kategori === tabAktif"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         class="bg-white rounded-3xl p-6 border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group" :class="item.warna">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">
+                                    <i :class="item.icon"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-white/80 backdrop-blur-sm text-gray-700 shadow-sm" x-text="item.tahun"></span>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary-700 block mb-1" x-text="item.tingkat"></span>
+                            <h4 class="font-heading font-bold text-gray-900 text-lg mb-3 group-hover:text-primary-700 transition-colors" x-text="item.nama"></h4>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100/80 mt-4">
+                            <p class="text-xs text-gray-600 font-medium flex items-center gap-1.5">
+                                <i class="fa-solid fa-user-graduate text-primary-600"></i>
+                                <span x-text="item.pemenang"></span>
+                            </p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="syarat" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Persyaratan</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Syarat Pendaftaran</h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600">Berkas dan ketentuan yang perlu disiapkan oleh calon murid baru.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-sm">
+                <ul class="space-y-4">
+                    <template x-for="(syarat, index) in syaratPendaftaran" :key="index">
+                        <li class="flex items-start gap-4">
+                            <div class="w-7 h-7 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 shadow-sm">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <p class="text-gray-700 text-base font-medium leading-relaxed" x-text="syarat"></p>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="jadwal" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Timeline</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="judulJadwal"></h3>
+                <div class="h-1 w-20 bg-primary-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
+                <template x-for="(jdwl, index) in jadwal" :key="index">
+                    <div :class="jdwl.status === 'aktif' ? 'bg-white border-2 border-primary-500 shadow-xl' : 'bg-gray-100 border border-gray-200 opacity-80'" class="rounded-3xl p-8 relative overflow-hidden">
+                        
+                        <div x-show="jdwl.status === 'aktif'" class="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-4 py-2 rounded-bl-xl" x-cloak>
+                            Sedang Dibuka
+                        </div>
+
+                        <h4 class="text-2xl font-heading font-bold mb-6" :class="jdwl.status === 'aktif' ? 'text-primary-800' : 'text-gray-600'" x-text="jdwl.gelombang"></h4>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="mt-1" :class="jdwl.status === 'aktif' ? 'text-primary-500' : 'text-gray-400'">
+                                    <i class="fa-regular fa-calendar-check text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 font-medium">Periode Pendaftaran</p>
+                                    <p class="font-bold text-gray-800" x-text="jdwl.tanggal"></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="mt-1" :class="jdwl.status === 'aktif' ? 'text-primary-500' : 'text-gray-400'">
+                                    <i class="fa-solid fa-file-pen text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 font-medium">Pelaksanaan Tes Seleksi</p>
+                                    <p class="font-bold text-gray-800" x-text="jdwl.tes"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-primary-50 border border-primary-200 rounded-2xl p-6 md:p-8 shadow-sm flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm mt-0.5">
+                    <i class="fa-solid fa-building-user"></i>
+                </div>
+                <div>
+                    <h5 class="font-heading font-bold text-primary-900 text-base mb-1">Informasi Tempat & Waktu Pendaftaran</h5>
+                    <p class="text-gray-700 text-sm md:text-base leading-relaxed" x-text="infoTempatDaftar"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="biaya" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">🔥 Dapatkan Diskon Menarik!</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Rincian Biaya PMBM</h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600">Rincian alokasi biaya pendaftaran murid baru tahun ajaran 2027/2028.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                <template x-for="(kat, index) in biaya.kategori" :key="index">
+                    <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm">
+                        <div class="bg-primary-700 text-white px-6 py-4 flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-accent-400 text-primary-900 font-bold flex items-center justify-center text-sm shadow-sm" x-text="kat.no"></span>
+                                <h4 class="font-heading font-bold text-lg" x-text="kat.nama"></h4>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <template x-for="(item, rIndex) in kat.rincian" :key="rIndex">
+                                    <div class="py-3 border-b border-gray-200/60 text-sm">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                            <span class="font-medium text-gray-700" x-text="item.nama"></span>
+                                            <div class="flex items-center gap-6 text-xs sm:text-sm">
+                                                <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-lg border border-gray-200">
+                                                    <span class="text-gray-400 font-normal">Putra:</span>
+                                                    <span class="font-semibold text-gray-800" x-text="item.putra"></span>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-lg border border-gray-200">
+                                                    <span class="text-gray-400 font-normal">Putri:</span>
+                                                    <span class="font-semibold text-gray-800" x-text="item.putri"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <template x-if="item.ketPutra">
+                                            <div class="mt-2 text-xs text-gray-500 bg-primary-50/50 p-2.5 rounded-xl border border-primary-100 space-y-1">
+                                                <p><span class="font-semibold text-primary-800">Putra:</span> <span x-text="item.ketPutra"></span></p>
+                                                <p><span class="font-semibold text-primary-800">Putri:</span> <span x-text="item.ketPutri"></span></p>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-primary-200 flex flex-col sm:flex-row justify-between items-center bg-primary-50/50 p-4 rounded-2xl gap-3">
+                                <span class="font-heading font-bold text-primary-900 text-base" x-text="'Jumlah ' + kat.nama"></span>
+                                <div class="flex items-center gap-6 text-sm font-bold">
+                                    <div class="text-primary-800">
+                                        Putra: <span class="text-primary-700 font-extrabold text-base ml-1" x-text="kat.jumlahPutra"></span>
+                                    </div>
+                                    <div class="text-primary-800">
+                                        Putri: <span class="text-primary-700 font-extrabold text-base ml-1" x-text="kat.jumlahPutri"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="bg-gradient-to-r from-primary-800 to-primary-900 text-white rounded-3xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 text-white/5 text-9xl font-extrabold pointer-events-none">DISCOUNT</div>
+                    <div>
+                        <span class="bg-accent-400 text-primary-950 font-bold text-xs px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Special Offer</span>
+                        <h4 class="font-heading font-bold text-xl md:text-2xl mb-1">TOTAL BIAYA</h4>
+                        <p class="text-primary-200 text-xs md:text-sm">Biaya Pokok + Kegiatan 1 Tahun + Seragam</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
+                        <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20 text-center">
+                            <span class="text-xs text-primary-200 block mb-0.5 font-medium">PUTRA</span>
+                            <span class="font-extrabold text-accent-400 text-lg md:text-xl" x-text="biaya.totalPutra"></span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20 text-center">
+                            <span class="text-xs text-primary-200 block mb-0.5 font-medium">PUTRI</span>
+                            <span class="font-extrabold text-accent-400 text-lg md:text-xl" x-text="biaya.totalPutri"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="py-20 bg-white" x-data="{ 
+        activeSlide: 0, 
+        autoplayInterval: null,
+        next() { this.activeSlide = (this.activeSlide === this.galeri.items.length - 1) ? 0 : this.activeSlide + 1 },
+        prev() { this.activeSlide = (this.activeSlide === 0) ? this.galeri.items.length - 1 : this.activeSlide - 1 },
+        startAutoplay() { this.autoplayInterval = setInterval(() => { this.next() }, 5000) },
+        stopAutoplay() { clearInterval(this.autoplayInterval) }
+    }" x-init="startAutoplay()">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-100 text-primary-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Dokumentasi</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4" x-text="galeri.judul"></h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600" x-text="galeri.deskripsi"></p>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative group" @mouseenter="stopAutoplay()" @mouseleave="startAutoplay()">
+                <div class="overflow-hidden rounded-2xl shadow-xl bg-gray-900 aspect-video relative">
+                    <template x-for="(item, index) in galeri.items" :key="index">
+                        <div x-show="activeSlide === index" 
+                             x-transition:enter="transition ease-out duration-500 z-10"
+                             x-transition:enter-start="opacity-0 translate-x-8"
+                             x-transition:enter-end="opacity-100 translate-x-0"
+                             x-transition:leave="transition ease-in duration-300 z-0"
+                             x-transition:leave-start="opacity-100 translate-x-0"
+                             x-transition:leave-end="opacity-0 -translate-x-8"
+                             class="absolute inset-0 w-full h-full flex items-center justify-center">
+                            
+                            <template x-if="item.tipe === 'foto'">
+                                <img :src="item.url" :alt="item.caption" class="w-full h-full object-cover">
+                            </template>
+                            
+                            <template x-if="item.tipe === 'video'">
+                                <iframe :src="item.url" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </template>
+
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12" x-show="item.tipe === 'foto'">
+                                <p class="text-white font-medium text-lg text-center shadow-sm" x-text="item.caption"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 hover:bg-white text-gray-800 rounded-full flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-10 focus:outline-none">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 hover:bg-white text-gray-800 rounded-full flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-10 focus:outline-none">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div class="flex justify-center gap-2 mt-6">
+                    <template x-for="(item, index) in galeri.items" :key="index">
+                        <button @click="activeSlide = index" 
+                                :class="activeSlide === index ? 'w-8 bg-primary-600' : 'w-2 bg-gray-300 hover:bg-primary-400'"
+                                class="h-2 rounded-full transition-all duration-300 focus:outline-none"></button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak" class="bg-gray-900 text-gray-300 pt-16 pb-8 border-t-4 border-primary-600 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+                
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img :src="sekolah.logo" alt="Logo Madrasah" class="w-10 h-10 object-contain bg-white rounded-lg shadow-sm">
+                        <div>
+                            <span class="font-heading font-bold text-xl text-white block leading-none mb-1" x-text="sekolah.namaSingkat"></span>
+                            <span class="text-xs text-primary-400 font-medium uppercase tracking-wider" x-text="sekolah.taglineNavbar"></span>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-amber-400/10 text-amber-400 text-xs font-bold px-2.5 py-1 rounded border border-amber-400/30 mb-5">
+                        <i class="fa-solid fa-award"></i>
+                        <span x-text="sekolah.akreditasi"></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6" x-text="'Pusat pendidikan Islam berprestasi di ' + sekolah.lokasi + ' mencetak generasi unggul berlandaskan Al-Qur\'an dan Sunnah.'"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6">Tautan Penting</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#beranda" class="hover:text-primary-400 transition-colors">Beranda</a></li>
+                        <li><a href="#visimisi" class="hover:text-primary-400 transition-colors">Profil (Visi & Misi)</a></li>
+                        <li><a href="#unggulan" class="hover:text-primary-400 transition-colors">Program Unggulan</a></li>
+                        <li><a href="#kurikulum" class="hover:text-primary-400 transition-colors">Kurikulum & Kelas</a></li>
+                        <li><a href="#fasilitas" class="hover:text-primary-400 transition-colors">Fasilitas Pendukung</a></li>
+                        <li><a href="#prestasi" class="hover:text-primary-400 transition-colors">Prestasi Murid</a></li>
+                        <li><a href="#syarat" class="hover:text-primary-400 transition-colors">Syarat Pendaftaran</a></li>
+                        <li><a href="#jadwal" class="hover:text-primary-400 transition-colors">Jadwal Pendaftaran</a></li>
+                        <li><a href="#biaya" class="hover:text-primary-400 transition-colors">Rincian Biaya</a></li>
+                        <li><a href="#galeri" class="hover:text-primary-400 transition-colors">Galeri Kegiatan</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6">Pusat Informasi PMB</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp mt-1.5 text-primary-400 text-lg"></i>
+                            <div class="flex flex-col gap-2">
+                                <a :href="kontak.waLink1" target="_blank" class="font-medium text-white hover:text-primary-400 transition-colors inline-flex items-center gap-2">
+                                    <span x-text="kontak.namaKontak1"></span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                                </a>
+                                <a :href="kontak.waLink2" target="_blank" class="font-medium text-white hover:text-primary-400 transition-colors inline-flex items-center gap-2">
+                                    <span x-text="kontak.namaKontak2"></span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary-400 text-lg"></i>
+                            <span x-text="kontak.alamat"></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-instagram text-primary-400 text-lg"></i>
+                            <a :href="kontak.igLink" target="_blank" class="hover:text-primary-400 transition-colors inline-flex items-center gap-2">
+                                <span x-text="kontak.namaInstagram"></span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>&copy; <span x-text="new Date().getFullYear()"></span> <span x-text="sekolah.namaSingkat + ' ' + sekolah.lokasi"></span>. All rights reserved.</p>
+                
+                <div class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-lg border border-gray-700 shadow-inner group cursor-default">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span class="text-gray-400 text-xs font-medium uppercase tracking-wider">Total Pengunjung:</span>
+                    <span class="text-white font-mono font-bold tracking-widest bg-gray-900 px-2 py-0.5 rounded" x-text="statistik.totalPengunjung"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
