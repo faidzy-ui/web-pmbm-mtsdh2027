@@ -142,8 +142,6 @@
                     yayasan: "Yayasan Daarul Hikmah Pamulang",
                     madrasah: "MTs. Daarul Hikmah",
                     logoPmbm: "logo_pmbm.png",
-                    fotoPendiri: "kh_saidih.jpg",
-                    fotoSiswa: "siswi_piala1.jpeg",
                     judulUtama: "Penerimaan Murid Baru Madrasah",
                     subJudul: "Tahun Ajaran 2027/2028",
                     tema: "\"Membentuk Generasi Bertaqwa, Berprestasi, Hidup Sehat, Kreatif, Berakhlak Mulia Berbasis Cinta\"",
@@ -153,6 +151,24 @@
                     pengumumanRuningText: "Pendaftaran Murid Baru Madrasah (PMBM) Tahun Ajaran 2027/2028 Segera Dibuka! Catat Tanggalnya!",
                     tanggalLaunching: "2026-10-31T09:00:00"
                 },
+
+                pimpinan: [
+                    {
+                        nama: "KH. Saidih",
+                        jabatan: "Pendiri Yayasan Daarul Hikmah",
+                        foto: "kh_saidih.jpg"
+                    },
+                    {
+                        nama: "Ketua Yayasan",
+                        jabatan: "Ketua Yayasan Daarul Hikmah",
+                        foto: "https://placehold.co/600x600/15803d/ffffff?text=Ketua+Yayasan"
+                    },
+                    {
+                        nama: "Dra. Hj. Sri Uswati",
+                        jabatan: "Kepala MTs. Daarul Hikmah",
+                        foto: "logo_mts.jpeg"
+                    }
+                ],
 
                 sambutan: {
                     judul: "Sambutan Kepala Madrasah",
@@ -754,6 +770,7 @@
                              x-transition:leave-start="opacity-100 translate-y-0"
                              x-transition:leave-end="opacity-0 translate-y-2"
                              class="absolute top-full left-0 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 mt-1 z-50" x-cloak>
+                            <a @click="dropdownProfil = false" href="#pimpinan" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-users-viewfinder text-primary-600 w-5 mr-2"></i> Pimpinan & Pendiri</a>
                             <a @click="dropdownProfil = false" href="#sambutan" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-user-tie text-primary-600 w-5 mr-2"></i> Sambutan Kepsek</a>
                             <a @click="dropdownProfil = false" href="#visimisi" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-eye text-primary-600 w-5 mr-2"></i> Visi & Misi</a>
                             <a @click="dropdownProfil = false" href="#sejarah" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-landmark text-primary-600 w-5 mr-2"></i> Sejarah Singkat</a>
@@ -830,6 +847,7 @@
                 <a @click="mobileMenuOpen = false" href="#beranda" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50">Beranda</a>
                 
                 <div class="px-4 py-2 font-semibold text-primary-700 text-xs uppercase tracking-wider mt-2">Profil Madrasah</div>
+                <a @click="mobileMenuOpen = false" href="#pimpinan" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Pimpinan & Pendiri</a>
                 <a @click="mobileMenuOpen = false" href="#sambutan" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Sambutan Kepsek</a>
                 <a @click="mobileMenuOpen = false" href="#visimisi" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Visi & Misi</a>
                 <a @click="mobileMenuOpen = false" href="#sejarah" class="block pl-6 pr-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-primary-50">↳ Sejarah Singkat</a>
@@ -868,20 +886,55 @@
         <div class="absolute inset-0 bg-primary-900/80 mix-blend-multiply"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/80 to-transparent opacity-90"></div>
         
-        <!-- Larger Foreground Founder & Student Photos (~2cm / ~8rem margin from screen edges) -->
-        <div class="absolute left-16 xl:left-28 top-1/2 -translate-y-1/2 w-72 md:w-80 lg:w-96 hidden xl:block z-25 pointer-events-none opacity-100 shadow-2xl">
-            <img :src="hero.fotoPendiri" alt="Tokoh Pendiri" class="w-full h-[38rem] lg:h-[42rem] object-cover">
-        </div>
-        <div class="absolute right-16 xl:right-28 top-1/2 -translate-y-1/2 w-72 md:w-80 lg:w-96 hidden xl:block z-25 pointer-events-none opacity-100 shadow-2xl">
-            <img :src="hero.fotoSiswa" alt="Siswa Siswi" class="w-full h-[38rem] lg:h-[42rem] object-cover">
+        <!-- Large Promotional Pop-up Sticker on the Right Side -->
+        <div class="absolute right-6 lg:right-16 top-1/2 -translate-y-1/2 w-64 md:w-72 hidden xl:block z-25 pointer-events-auto animate-pulse-badge">
+            <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-6 rounded-3xl shadow-2xl border-4 border-white text-center relative overflow-hidden transform rotate-2 hover:rotate-0 transition-transform">
+                <div class="absolute -right-12 -top-12 w-28 h-28 bg-white/20 rounded-full blur-xl"></div>
+                <div class="absolute -left-12 -bottom-12 w-28 h-28 bg-white/20 rounded-full blur-xl"></div>
+                
+                <span class="inline-block bg-rose-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full mb-3 shadow-md tracking-wider">
+                    <i class="fa-solid fa-fire mr-1 text-accent-400"></i> Promo Spesial PMBM
+                </span>
+                
+                <h4 class="font-heading font-black text-xl md:text-2xl text-primary-950 mb-1 leading-tight">
+                    Hanya 2 Jutaan Saja!
+                </h4>
+                <p class="text-xs md:text-sm font-bold text-primary-900 mb-4">
+                    Biaya Pendaftaran Terjangkau & Transparan
+                </p>
+                
+                <div class="bg-white/90 backdrop-blur-sm p-3.5 rounded-2xl border border-white shadow-inner mb-4">
+                    <p class="text-[11px] font-extrabold text-rose-700 uppercase tracking-wide">
+                        <i class="fa-solid fa-tags mr-1"></i> Potongan Uang Gedung
+                    </p>
+                    <p class="text-lg md:text-xl font-black text-primary-950">
+                        SEBESAR 50%
+                    </p>
+                </div>
+                
+                <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-all">
+                    Lihat Rincian Biaya <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+            </div>
         </div>
 
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h3 class="text-base md:text-lg text-primary-100 font-bold tracking-widest uppercase mb-1 drop-shadow-md" x-text="hero.yayasan"></h3>
-                <h2 class="text-3xl md:text-4xl font-heading font-black text-accent-400 mb-4 drop-shadow-xl uppercase" x-text="hero.madrasah"></h2>
-                
+            <div class="text-center max-w-4xl mx-auto mb-8">
+                <!-- Logos Header: Lembaga & Kemenag -->
+                <div class="flex items-center justify-center gap-6 mb-4">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2 shadow-xl flex items-center justify-center border-2 border-white/80">
+                        <img src="logo_mts.png" alt="Logo Lembaga" class="w-full h-full object-contain">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-sm md:text-base text-primary-100 font-bold tracking-widest uppercase drop-shadow-md" x-text="hero.yayasan"></h3>
+                        <h2 class="text-xl md:text-2xl font-heading font-black text-accent-400 drop-shadow-xl uppercase" x-text="hero.madrasah"></h2>
+                    </div>
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2 shadow-xl flex items-center justify-center border-2 border-white/80">
+                        <img src="https://placehold.co/200x200/047857/ffffff?text=KEMENAG" alt="Logo Kemenag" class="w-full h-full object-contain">
+                    </div>
+                </div>
+
                 <div class="flex justify-center mb-4">
                     <div class="relative group">
                         <div class="absolute -inset-1 bg-gradient-to-r from-accent-400 to-primary-500 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
@@ -892,25 +945,10 @@
                 </div>
                 
                 <div class="relative inline-block max-w-5xl mx-auto">
-                    <div class="absolute -top-12 right-0 sm:-right-4 md:-top-14 md:-right-8 z-20 cursor-pointer hover:scale-110 transition-transform" onclick="location.href='#biaya'">
-                        <div class="relative bg-gradient-to-r from-emerald-500 to-teal-400 text-white px-3.5 py-2 rounded-2xl shadow-2xl border-2 border-white rotate-6">
-                            <div class="absolute -bottom-2.5 left-6 w-4 h-4 bg-teal-400 rotate-45 border-r-2 border-b-2 border-white"></div>
-                            <div class="relative z-10 flex items-center gap-2">
-                                <div class="bg-white/20 p-1.5 rounded-xl">
-                                    <i class="fa-solid fa-wallet text-lg animate-pulse text-accent-400"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="text-[9px] md:text-[10px] font-black uppercase tracking-wider text-emerald-50 mb-0.5">Biaya Pendaftaran</p>
-                                    <p class="text-xs md:text-sm font-extrabold leading-none text-white drop-shadow-sm">Hanya 2 Jutaan!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-heading font-extrabold text-white mb-2 leading-tight" x-text="hero.judulUtama"></h1>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-2 leading-tight uppercase drop-shadow-2xl" x-text="hero.judulUtama"></h1>
                 </div>
                 
-                <p class="text-lg md:text-xl text-white font-bold mb-4 tracking-wide mt-1" x-text="hero.subJudul"></p>
+                <p class="text-xl md:text-2xl lg:text-3xl text-accent-400 font-black mb-4 tracking-wider mt-2 drop-shadow-lg" x-text="hero.subJudul"></p>
             </div>
             
             <p class="text-sm md:text-base text-primary-100 font-medium mb-8 max-w-3xl mx-auto italic drop-shadow-md text-center" x-text="hero.tema"></p>
@@ -959,6 +997,29 @@
                     <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText + ' ✨ ' + sekolah.tagline"></span></span>
                     <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText + ' ✨ ' + sekolah.tagline"></span></span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kolom Pimpinan & Pendiri Madrasah -->
+    <section id="pimpinan" class="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-primary-100 border-b border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-primary-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Dewan Pimpinan & Tokoh Sentral</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">Pendiri, Ketua Yayasan & Kepala Madrasah</h3>
+                <div class="h-1 w-20 bg-accent-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <template x-for="(tokoh, index) in pimpinan" :key="index">
+                    <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl border border-emerald-100 overflow-hidden flex flex-col items-center text-center p-6 transition-all group">
+                        <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-emerald-900 relative overflow-hidden mb-6 border-4 border-emerald-100 shadow-md">
+                            <img :src="tokoh.foto" :alt="tokoh.nama" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <span class="bg-accent-500 text-primary-950 font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow mb-2" x-text="tokoh.jabatan"></span>
+                        <h4 class="font-heading font-bold text-xl md:text-2xl text-gray-900" x-text="tokoh.nama"></h4>
+                    </div>
+                </template>
             </div>
         </div>
     </section>
@@ -1205,6 +1266,81 @@
                         <p class="text-gray-600 text-sm leading-relaxed" x-text="item.deskripsi"></p>
                     </div>
                 </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kenapa Harus ke MTs. Daarul Hikmah -->
+    <section class="py-20 bg-gradient-to-br from-teal-900 via-primary-950 to-emerald-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-islamic opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-accent-400 text-primary-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow">Keunggulan Madrasah</span>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Kenapa Harus ke MTs. Daarul Hikmah?</h3>
+                <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-200 font-medium">Alasan kuat mengapa MTs Daarul Hikmah adalah pilihan terbaik untuk masa depan buah hati Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Kurikulum Berbasis Cinta (KBC)</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Penerapan metode pembelajaran yang penuh kasih sayang, mendidik dengan hati, dan berfokus pada pembentukan karakter akhlakul karimah.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Akidahnya Ahlussunnah wal Jama'ah</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Menanamkan pondasi akidah yang kokoh, pembiasaan ibadah harian yang tertib, serta pemahaman keislaman yang moderat dan toleran.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Segudang Prestasi Membanggakan</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Aktif membina potensi murid hingga sukses meraih berbagai juara di tingkat Kota Tangerang Selatan, JABODETABEK, hingga Nasional.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-book-quran"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Program Tahfidz & BTQ Intensif</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Pembinaan hafalan Al-Qur'an dan bimbingan Baca Tulis Qur'an secara intensif dan terukur bagi seluruh murid.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Biaya Terjangkau & Transparan</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Biaya pendaftaran hanya 2 jutaan dengan potongan uang gedung sebesar 50%, transparan, dan tanpa biaya tersembunyi.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl flex flex-col justify-between group hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-accent-400 text-primary-950 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-3">Fasilitas Lengkap & Representatif</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Didukung sarana ibadah, laboratorium komputer, perpustakaan, ruang kelas nyaman, serta ragam ekstrakurikuler menarik.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1704,6 +1840,7 @@
                     <h4 class="text-white font-heading font-bold mb-6">Tautan Penting</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#beranda" class="hover:text-primary-400 transition-colors">Beranda</a></li>
+                        <li><a href="#pimpinan" class="hover:text-primary-400 transition-colors">Pimpinan & Pendiri</a></li>
                         <li><a href="#sambutan" class="hover:text-primary-400 transition-colors">Sambutan Kepsek</a></li>
                         <li><a href="#visimisi" class="hover:text-primary-400 transition-colors">Profil (Visi & Misi)</a></li>
                         <li><a href="#sejarah" class="hover:text-primary-400 transition-colors">Sejarah Singkat</a></li>
