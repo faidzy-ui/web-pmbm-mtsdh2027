@@ -95,7 +95,12 @@
         }
         .marquee-content {
             display: inline-flex;
-            animation: marquee 25s linear infinite;
+            animation: marquee 6s linear infinite;
+        }
+        @media (min-width: 768px) {
+            .marquee-content {
+                animation: marquee 10s linear infinite;
+            }
         }
         .sticker-berkah {
             font-family: 'Caveat', cursive;
@@ -146,6 +151,23 @@
             }
         }
 
+        function getVisitorCount() {
+            let count = localStorage.getItem('mts_daarulhikmah_visitors');
+            if (!count) {
+                count = 1;
+                localStorage.setItem('mts_daarulhikmah_visitors', count);
+            } else {
+                count = parseInt(count);
+            }
+            
+            if (!sessionStorage.getItem('visited_session')) {
+                count += 1;
+                localStorage.setItem('mts_daarulhikmah_visitors', count);
+                sessionStorage.setItem('visited_session', 'true');
+            }
+            return count.toLocaleString('id-ID');
+        }
+
         function websiteData() {
             return {
                 sekolah: {
@@ -158,6 +180,10 @@
                     logo: "logo_mts.png" 
                 },
                 
+                portalInfo: {
+                    waktuAkses: new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' pukul ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
+                },
+
                 hero: {
                     bgImages: [
                         "btq.jpeg",
@@ -176,7 +202,7 @@
                     mottoArab: "المُحَافَظَةُ عَلَى القَدِيْمِ الصَّالِحِ وَالأَخْذُ بِالجَدِيْدِ الأَصْلَحِ",
                     mottoTerjemahan: "(Memelihara tradisi lama yang baik, dan mengambil hal baru yang lebih baik)",
                     tombolDaftar: "Hubungi Kami",
-                    pengumumanRuningText: "Pendaftaran Murid Baru Madrasah (PMBM) Tahun Ajaran 2027/2028 Segera Dibuka! Catat Tanggalnya!",
+                    pengumumanRuningText: "Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar tercepat! Pendaftaran Tahun Ajaran 2027/2028 Segera Dibuka!",
                     tanggalLaunching: "2026-10-31T09:00:00"
                 },
 
@@ -219,15 +245,17 @@
                     items: [
                         { 
                             tanggal: "31 Oktober 2026", 
+                            tglUnggah: "Diunggah pada 20 Oktober 2026",
                             judul: "Launching PMBM", 
                             ringkasan: "Pembukaan resmi pendaftaran murid baru. Kuota voucher diskon terbatas akan dibagikan kepada pendaftar pertama pada hari tersebut.", 
-                            lengkap: "Pembukaan resmi pendaftaran murid baru tahun ajaran 2027/2028. Pada momen grand launching ini, pihak yayasan dan panitia PMBM akan membagikan voucher diskon khusus biaya pendaftaran secara terbatas bagi pendaftar tercepat. Pastikan Anda bersiap dan mendaftar tepat waktu!",
+                            lengkap: "Pembukaan resmi pendaftaran murid baru tahun ajaran 2027/2028. Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar pertama. Pada momen grand launching ini, pihak yayasan dan panitia PMBM akan membagikan voucher diskon khusus biaya pendaftaran secara terbatas bagi pendaftar tercepat. Pastikan Anda bersiap dan mendaftar tepat waktu!",
                             icon: "fa-solid fa-rocket", 
                             warna: "text-rose-600 bg-rose-100",
                             buka: false 
                         },
                         { 
-                            tanggal: "15 Oktober 2026", 
+                            tanggal: "19 Oktober 2026", 
+                            tglUnggah: "Diunggah pada 19 Oktober 2026",
                             judul: "Rilis Panduan Pembiayaan", 
                             ringkasan: "Transparansi adalah kunci. Rincian biaya pendidikan dari uang pangkal hingga kegiatan tahunan kini sudah dapat diakses di menu Biaya.", 
                             lengkap: "Transparansi adalah kunci kenyamanan orang tua murid. Rincian biaya pendidikan mulai dari biaya pokok pendaftaran, kegiatan kesiswaan selama 1 tahun, hingga seragam lengkap untuk putra dan putri kini sudah dapat diakses secara terbuka pada menu Rincian Biaya di website ini.",
@@ -236,7 +264,8 @@
                             buka: false 
                         },
                         { 
-                            tanggal: "10 Oktober 2026", 
+                            tanggal: "19 Oktober 2026", 
+                            tglUnggah: "Diunggah pada 19 Oktober 2026",
                             judul: "Layanan Konsultasi Dibuka", 
                             ringkasan: "Hubungi admin kami jika Anda memiliki kendala teknis atau pertanyaan mengenai kurikulum dan program asrama/tahfidz.", 
                             lengkap: "Tim panitia PMBM MTs Daarul Hikmah siap melayani pertanyaan seputar alur pendaftaran, pilihan kelas reguler atau takhassus tahfidz, serta jadwal tes seleksi. Silakan hubungi nomor kontak admin WhatsApp yang tertera di bagian bawah website.",
@@ -244,7 +273,26 @@
                             warna: "text-blue-600 bg-blue-100",
                             buka: false 
                         }
-                    ]
+                    ],
+                    arsip: [
+                        {
+                            tanggalArsip: "10 September 2026",
+                            tglUnggahArsip: "Diunggah pada 10 September 2026",
+                            judulArsip: "Sosialisasi Pra-PMBM 2027",
+                            ringkasanArsip: "Pertemuan koordinasi awal internal yayasan dan dewan guru dalam rangka persiapan penyusunan brosur PMBM.",
+                            iconArsip: "fa-solid fa-clipboard",
+                            warnaArsip: "text-purple-600 bg-purple-100"
+                        },
+                        {
+                            tanggalArsip: "25 Agustus 2026",
+                            tglUnggahArsip: "Diunggah pada 25 Agustus 2026",
+                            judulArsip: "Rapat Kerja Kurikulum KBC",
+                            ringkasanArsip: "Evaluasi penerapan Kurikulum Berbasis Cinta untuk tahun ajaran mendatang demi meningkatkan mutu lulusan.",
+                            iconArsip: "fa-solid fa-book",
+                            warnaArsip: "text-amber-600 bg-amber-100"
+                        }
+                    ],
+                    showArsip: false
                 },
 
                 visiMisi: {
@@ -631,7 +679,7 @@
                                 { nama: "Buku pedoman BTQ Tarsana", putra: "Rp 30,000", putri: "Rp 30,000" },
                                 { nama: "Buku Rapor", putra: "Rp 150,000", putri: "Rp 150,000" },
                                 { nama: "SPP + Tabungan", putra: "Rp 265,000", putri: "Rp 265,000" },
-                                { nama: "Biaya gedung (DISKON 50%)", putra: "Rp 500,000", putri: "Rp 500,000" }
+                                { nama: "Biaya gedung (DISKON 50%)", putra: "Rp 500,000", putri: "Rp 500,000", isDiskon: true }
                             ]
                         },
                         {
@@ -755,7 +803,7 @@
                 },
 
                 statistik: {
-                    totalPengunjung: "1,452"
+                    totalPengunjung: getVisitorCount()
                 },
 
                 mobileMenuOpen: false,
@@ -766,31 +814,40 @@
         }
     </script>
 
-    <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-40 w-48 sm:w-60 md:w-72 animate-pulse-badge">
-        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-3.5 sm:p-4 md:p-5 rounded-2xl shadow-2xl border-4 border-white text-center relative overflow-hidden">
-            <span class="inline-block bg-rose-600 text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase px-2.5 py-0.5 rounded-full mb-1.5 shadow-md tracking-wider">
-                <i class="fa-solid fa-fire mr-1 text-accent-400"></i> Promo Spesial PMBM
+    <!-- Floating Promo Badge (Pojok Kiri Bawah & Lebih Kecil) -->
+    <div class="fixed bottom-3 left-3 z-40 w-28 sm:w-36 md:w-56 animate-pulse-badge">
+        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-2 sm:p-2.5 md:p-4 rounded-xl shadow-2xl border-2 border-white text-center relative overflow-hidden">
+            <span class="inline-block bg-rose-600 text-white text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase px-1.5 py-0.5 rounded-full mb-0.5 shadow-md tracking-wider">
+                <i class="fa-solid fa-fire mr-0.5 text-accent-400"></i> Promo
             </span>
             
-            <h4 class="font-heading font-black text-sm sm:text-base md:text-xl text-primary-950 mb-1 leading-tight">
-                Biaya Hanya 2 Jutaan!
+            <h4 class="font-heading font-black text-[11px] sm:text-xs md:text-base text-primary-950 mb-0.5 leading-tight">
+                Biaya Masuk Hanya 2 Jt-an!
             </h4>
-            <p class="text-[9px] sm:text-[10px] md:text-xs font-bold text-primary-900 mb-2">
-                Pendaftaran Terjangkau & Berkualitas
-            </p>
             
-            <div class="bg-white/95 backdrop-blur-sm p-2 sm:p-2.5 md:p-3 rounded-xl border-2 border-white shadow-inner mb-3">
-                <p class="text-[8px] sm:text-[9px] md:text-[10px] font-extrabold text-rose-700 uppercase tracking-wide mb-0.5">
-                    <i class="fa-solid fa-tags mr-1"></i> Potongan Uang Gedung
+            <div class="bg-white/95 backdrop-blur-sm p-1 sm:p-1.5 md:p-2 rounded-lg border border-white shadow-inner mb-1.5">
+                <p class="text-[6px] sm:text-[7px] md:text-[9px] font-extrabold text-rose-700 uppercase tracking-wide">
+                    Diskon Uang Gedung
                 </p>
-                <p class="text-base sm:text-lg md:text-2xl font-black text-rose-600 drop-shadow-sm">
-                    SEBESAR 50%
+                <p class="text-xs sm:text-sm md:text-lg font-black text-rose-700 drop-shadow-sm">
+                    50%
                 </p>
             </div>
             
-            <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-2 px-3 rounded-xl text-[9px] sm:text-[10px] md:text-xs uppercase tracking-wider shadow-lg transition-all">
-                Cek Rincian Biaya <i class="fa-solid fa-arrow-right ml-1"></i>
+            <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-1 px-1.5 rounded-lg text-[7px] sm:text-[8px] md:text-[10px] uppercase tracking-wider shadow transition-all">
+                Cek Biaya <i class="fa-solid fa-arrow-right ml-0.5"></i>
             </a>
+        </div>
+    </div>
+
+    <!-- Floating Visitor Counter (Pojok Kanan Bawah) -->
+    <div class="fixed bottom-3 right-3 z-40">
+        <div class="bg-gray-900/90 hover:bg-gray-900 text-gray-200 px-3 py-2 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex items-center gap-2 text-[10px] sm:text-xs font-medium">
+            <i class="fa-solid fa-users text-primary-400 text-sm animate-pulse"></i>
+            <div class="flex flex-col">
+                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Pengunjung</span>
+                <span class="font-black text-accent-400 text-xs sm:text-sm" x-text="statistik.totalPengunjung"></span>
+            </div>
         </div>
     </div>
 
@@ -930,6 +987,12 @@
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             
             <div class="text-center max-w-4xl mx-auto mb-8">
+                <!-- Portal Access Timestamp Banner -->
+                <div class="inline-flex items-center gap-2 bg-black/40 border border-white/20 text-accent-400 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md mb-6 shadow-lg">
+                    <i class="fa-regular fa-clock animate-pulse"></i>
+                    <span>Portal diakses pada: <span class="text-white" x-text="portalInfo.waktuAkses"></span></span>
+                </div>
+
                 <!-- Logos Header: Lembaga & Kemenag -->
                 <div class="flex items-center justify-center gap-6 mb-4">
                     <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
@@ -973,7 +1036,7 @@
                 <div class="absolute -right-12 top-6 bg-rose-600 text-white font-bold text-[10px] py-1 px-12 rotate-45 shadow-lg">VOUCHER TERBATAS!</div>
                 
                 <h3 class="text-accent-400 font-heading font-bold text-xl md:text-2xl mb-2">Hitung Mundur Grand Launching</h3>
-                <p class="text-primary-100 text-sm md:text-base mb-6">Dapatkan <span class="font-bold text-white bg-rose-600/30 px-2 rounded">Voucher Diskon Spesial</span> bagi pendaftar di hari pertama launching! (S&K Berlaku)</p>
+                <p class="text-primary-100 text-sm md:text-base mb-6 font-medium">Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar pertama! (S&K Berlaku)</p>
                 
                 <div class="flex justify-center gap-3 md:gap-6 text-white" x-show="distance > 0">
                     <div class="flex flex-col items-center">
@@ -1002,13 +1065,13 @@
                 </div>
             </div>
 
-            <div class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-accent-400 via-amber-400 to-accent-500 border-2 border-amber-300 text-primary-950 text-base md:text-xl font-black tracking-wider shadow-2xl marquee-container">
+            <div class="w-full py-3 px-4 sm:px-6 rounded-2xl bg-gradient-to-r from-accent-400 via-amber-400 to-accent-500 border-2 border-amber-300 text-primary-950 text-sm sm:text-base md:text-xl font-black tracking-wider shadow-2xl marquee-container">
                 <div class="marquee-content">
                     <div class="flex items-center gap-12 shrink-0 pr-12">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span></span>
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-lg"></i> <span x-text="hero.pengumumanRuningText"></span></span>
                     </div>
                     <div class="flex items-center gap-12 shrink-0 pr-12">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span></span>
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-lg"></i> <span x-text="hero.pengumumanRuningText"></span></span>
                     </div>
                 </div>
             </div>
@@ -1092,16 +1155,18 @@
                 <p class="text-gray-600 font-medium" x-text="infoTerkini.deskripsi"></p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Active Posts Grid -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
                 <template x-for="(info, index) in infoTerkini.items" :key="index">
                     <div class="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-md hover:shadow-xl border border-emerald-200/60 transition-all group flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center gap-4 mb-5">
+                            <div class="flex items-center gap-4 mb-4">
                                 <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-sm shrink-0" :class="info.warna">
                                     <i :class="info.icon"></i>
                                 </div>
                                 <div>
                                     <span class="text-xs font-bold text-primary-700 uppercase tracking-wider" x-text="info.tanggal"></span>
+                                    <p class="text-[10px] text-gray-400 font-medium" x-text="info.tglUnggah"></p>
                                     <h4 class="font-heading font-bold text-gray-900 text-lg leading-tight mt-0.5" x-text="info.judul"></h4>
                                 </div>
                             </div>
@@ -1113,6 +1178,34 @@
                                 <i class="fa-solid" :class="info.buka ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
                             </button>
                         </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Archive Toggle Button & Section -->
+            <div class="max-w-6xl mx-auto text-center mt-6">
+                <button aria-label="Arsip Informasi" @click="infoTerkini.showArsip = !infoTerkini.showArsip" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold px-6 py-3 rounded-full shadow-md transition-all inline-flex items-center gap-2">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span x-text="infoTerkini.showArsip ? 'Tutup Arsip Informasi' : 'Lihat Arsip Informasi Sebelumnya'"></span>
+                    <i class="fa-solid" :class="infoTerkini.showArsip ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
+            </div>
+
+            <!-- Archive Grid -->
+            <div x-show="infoTerkini.showArsip" x-transition class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-8 pt-8 border-t border-emerald-200" x-cloak>
+                <template x-for="(arsip, aIndex) in infoTerkini.arsip" :key="aIndex">
+                    <div class="bg-gray-100/90 backdrop-blur-sm p-6 rounded-2xl shadow-inner border border-gray-200 flex flex-col justify-between">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0" :class="arsip.warnaArsip">
+                                <i :class="arsip.iconArsip"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider" x-text="arsip.tanggalArsip"></span>
+                                <p class="text-[9px] text-gray-400 font-medium" x-text="arsip.tglUnggahArsip"></p>
+                                <h5 class="font-heading font-bold text-gray-800 text-base" x-text="arsip.judulArsip"></h5>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed" x-text="arsip.ringkasanArsip"></p>
                     </div>
                 </template>
             </div>
@@ -1730,8 +1823,8 @@
                                     <div class="py-3 border-b border-gray-200/60 text-sm">
                                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                             <span class="font-semibold text-gray-800 flex items-center gap-2 flex-wrap">
-                                                <span x-text="item.nama.replace(' (DISKON 50%)', '')"></span>
-                                                <span x-show="item.nama.includes('DISKON 50%')" class="bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow-sm tracking-wide animate-pulse">DISKON 50%</span>
+                                                <span x-text="item.nama"></span>
+                                                <span x-show="item.isDiskon" class="bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow-sm tracking-wide animate-pulse">(DISKON 50%)</span>
                                             </span>
                                             <div class="flex items-center gap-6 text-xs sm:text-sm">
                                                 <div class="flex items-center gap-1.5 bg-amber-50/80 px-3 py-1 rounded-lg border border-amber-200">
@@ -1913,28 +2006,24 @@
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot mt-1 text-primary-400 text-lg"></i>
-                            <span x-text="kontak.alamat"></span>
+                            <i class="fa-solid fa-location-dot mt-1 text-primary-400"></i>
+                            <span class="leading-relaxed" x-text="kontak.alamat"></span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-brands fa-instagram text-primary-400 text-lg"></i>
-                            <a :href="kontak.igLink" target="_blank" class="hover:text-primary-400 transition-colors inline-flex items-center gap-2">
-                                <span x-text="kontak.namaInstagram"></span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
-                            </a>
+                            <i class="fa-solid fa-envelope text-primary-400"></i>
+                            <span x-text="kontak.email"></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-instagram text-primary-400"></i>
+                            <a :href="kontak.igLink" target="_blank" class="hover:text-primary-400 transition-colors" x-text="kontak.namaInstagram"></a>
                         </li>
                     </ul>
                 </div>
+
             </div>
 
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                <p>&copy; <span x-text="new Date().getFullYear()"></span> <span x-text="sekolah.namaSingkat + ' ' + sekolah.lokasi"></span>. All rights reserved.</p>
-                
-                <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800 shadow-inner group cursor-default">
-                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                    <span class="text-gray-400 text-xs font-medium uppercase tracking-wider">Total Pengunjung:</span>
-                    <span class="text-white font-mono font-bold tracking-widest bg-black px-2 py-0.5 rounded" x-text="statistik.totalPengunjung"></span>
-                </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+                <p>&copy; 2026-2027 MTs. Daarul Hikmah Pamulang. All Rights Reserved. Sehat, Hebat, Bermartabat!</p>
             </div>
         </div>
     </footer>
