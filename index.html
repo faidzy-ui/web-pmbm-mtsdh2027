@@ -7,7 +7,7 @@
     
     <!-- Primary Meta Tags -->
     <meta name="title" content="PMBM MTs Daarul Hikmah Tahun Ajaran 2027/2028">
-    <meta name="description" content="Pendaftaran Murid Baru Madrasah MTs Daarul Hikmah. Membentuk generasi Bertaqwa, Berprestasi, Hidup Sehat, Kreatif, Berakhlak Mulia Berbasis Cinta.">
+    <meta name="description" content="Pendaftaran Murid Baru Madrasah MTs Daarul Hikmah. Membentuk generasi BERKAH (bertaqwa, berprestasi, hidup sehat, kreatif, berakhlak mulia) Berbasis Cinta.">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
@@ -35,7 +35,7 @@
     <!-- Error Handler -->
     <script>
         window.addEventListener('unhandledrejection', event => {
-            if (event.reason && event.reason.isFromCancelledTransition) {
+            if (event.reason && (event.reason.isFromCancelledTransition || (typeof event.reason === 'object' && event.reason !== null && 'isFromCancelledTransition' in event.reason))) {
                 event.preventDefault();
             }
         });
@@ -82,8 +82,8 @@
             50% { transform: scale(1.03); }
         }
         @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
         .animate-pulse-badge {
             animation: pulse-badge 2s ease-in-out infinite;
@@ -91,25 +91,22 @@
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
+            display: flex;
         }
         .marquee-content {
-            display: inline-block;
+            display: inline-flex;
             animation: marquee 25s linear infinite;
         }
-        /* Style Stiker Miring */
         .sticker-berkah {
             font-family: 'Caveat', cursive;
+            transform: rotate(-3deg);
             display: inline-block;
-            transform: rotate(-4deg);
-            background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
-            color: #713f12;
-            padding: 0.05em 0.35em;
+            background-color: #facc15;
+            color: #14532d;
+            padding: 0.1rem 0.5rem;
             border-radius: 0.375rem;
-            box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.15);
-            border: 1.5px dashed #ca8a04;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             font-weight: 700;
-            line-height: 1;
-            vertical-align: middle;
         }
     </style>
 </head>
@@ -133,7 +130,7 @@
                         if (this.distance > 0) {
                             this.days = String(Math.floor(this.distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
                             this.hours = String(Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                            this.mins = String(Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60 * 60))).padStart(2, '0');
+                            this.mins = String(Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
                             this.secs = String(Math.floor((this.distance % (1000 * 60)) / 1000)).padStart(2, '0');
                         } else {
                             this.days = '00';
@@ -153,8 +150,8 @@
             return {
                 sekolah: {
                     namaSingkat: "MTs Daarul Hikmah",
-                    tagline: "Daarul Hikmah... Sehat, Hebat, Bermartabat! BERKAH",
-                    taglineNavbar: "Sehat, Hebat, Bermartabat! BERKAH",
+                    tagline: "Sehat, Hebat, Bermartabat!",
+                    taglineBerkah: "Sehat, Hebat, Bermartabat!",
                     lokasi: "Pamulang",
                     tahunAjaran: "2027/2028",
                     akreditasi: "Terakreditasi A",
@@ -175,7 +172,7 @@
                     logoPmbm: "logo_pmbm.png",
                     judulUtama: "Penerimaan Murid Baru Madrasah",
                     subJudul: "Tahun Ajaran 2027/2028",
-                    tema: "\"Membentuk generasi BERKAH (bertaqwa, berprestasi, hidup sehat, kreatif, berakhlak mulia) Berbasis Cinta.\"",
+                    tema: "Membentuk generasi BERKAH (bertaqwa, berprestasi, hidup sehat, kreatif, berakhlak mulia) Berbasis Cinta.",
                     mottoArab: "المُحَافَظَةُ عَلَى القَدِيْمِ الصَّالِحِ وَالأَخْذُ بِالجَدِيْدِ الأَصْلَحِ",
                     mottoTerjemahan: "(Memelihara tradisi lama yang baik, dan mengambil hal baru yang lebih baik)",
                     tombolDaftar: "Hubungi Kami",
@@ -208,12 +205,12 @@
                     foto: "kamad2.png",
                     videoUrl: "",
                     ringkas: "Assalamu'alaikum Wr. Wb. Selamat datang di portal resmi Penerimaan Murid Baru Madrasah (PMBM) MTs. Daarul Hikmah. Kami berkomitmen penuh untuk mendidik dan mencetak generasi yang unggul dalam prestasi dan berakhlakul karimah...",
-                    lengkap: "Assalamu'alaikum Wr. Wb. Selamat datang di portal resmi Penerimaan Murid Baru Madrasah (PMBM) MTs. Daarul Hikmah. Kami berkomitmen penuh untuk mendidik dan mencetak generasi yang tidak hanya unggul dalam prestasi akademik, tetapi juga memiliki kepekaan sosial, kreatif, berbudaya hidup sehat, dan berakhlakul karimah yang kuat berlandaskan ajaran Ahlussunnah wal Jama'ah. Mari bergabung dan wujudkan cita-cita besar bersama keluarga besar Daarul Hikmah. Sehat, Hebat, Bermartabat! BERKAH"
+                    lengkap: "Assalamu'alaikum Wr. Wb. Selamat datang di portal resmi Penerimaan Murid Baru Madrasah (PMBM) MTs. Daarul Hikmah. Kami berkomitmen penuh untuk mendidik dan mencetak generasi yang tidak hanya unggul dalam prestasi akademik, tetapi juga memiliki kepekaan sosial, kreatif, berbudaya hidup sehat, dan berakhlakul karimah yang kuat berlandaskan ajaran Ahlussunnah wal Jama'ah. Mari bergabung dan wujudkan cita-cita besar bersama keluarga besar Daarul Hikmah. Sehat, Hebat, Bermartabat!"
                 },
 
                 sejarah: {
                     ringkas: "Berawal dari kepedulian yang mendalam terhadap dunia pendidikan Islam dan masa depan generasi muda di wilayah Pamulang, Yayasan Daarul Hikmah Pamulang mendirikan lembaga pendidikan formal tingkat menengah pertama yaitu MTs. Daarul Hikmah...",
-                    lengkap: "Berawal dari kepedulian yang mendalam terhadap dunia pendidikan Islam dan masa depan generasi muda di wilayah Pamulang, Yayasan Daarul Hikmah Pamulang mendirikan lembaga pendidikan formal tingkat menengah pertama yaitu MTs. Daarul Hikmah. Kehadiran madrasah ini didasari oleh semangat untuk memadukan ilmu pengetahuan umum yang berkualitas dengan pondasi nilai-nilai keagamaan yang kokoh berdasarkan manhaj Ahlussunnah wal Jama'ah. Seiring dengan berjalannya waktu, berkat kerja keras para pendiri, dewan guru, serta dukungan penuh dari masyarakat dan wali murid, MTs. Daarul Hikmah terus berkembang pesat. Berbagai sarana dan prasarana belajar yang representatif terus dibangun guna menciptakan suasana kegiatan belajar mengajar yang kondusif, nyaman, dan Islami. Hingga saat ini, MTs. Daarul Hikmah telah sukses mencetak ratusan lulusan berprestasi yang tersebar di berbagai jenjang pendidikan lanjutan, serta aktif berkontribusi di tengah masyarakat dengan membawa teladan akhlakul karimah. Dengan mengusung Kurikulum Berbasis Cinta (KBC) dan pembiasaan ibadah harian, madrasah terus berkomitmen untuk senantiasa melahirkan generasi yang Sehat, Hebat, Bermartabat! BERKAH."
+                    lengkap: "Berawal dari kepedulian yang mendalam terhadap dunia pendidikan Islam dan masa depan generasi muda di wilayah Pamulang, Yayasan Daarul Hikmah Pamulang mendirikan lembaga pendidikan formal tingkat menengah pertama yaitu MTs. Daarul Hikmah. Kehadiran madrasah ini didasari oleh semangat untuk memadukan ilmu pengetahuan umum yang berkualitas dengan pondasi nilai-nilai keagamaan yang kokoh berdasarkan manhaj Ahlussunnah wal Jama'ah. Seiring dengan berjalannya waktu, berkat kerja keras para pendiri, dewan guru, serta dukungan penuh dari masyarakat dan wali murid, MTs. Daarul Hikmah terus berkembang pesat. Berbagai sarana dan prasarana belajar yang representatif terus dibangun guna menciptakan suasana kegiatan belajar mengajar yang kondusif, nyaman, dan Islami. Hingga saat ini, MTs. Daarul Hikmah telah sukses mencetak ratusan lulusan berprestasi yang tersebar di berbagai jenjang pendidikan lanjutan, serta aktif berkontribusi di tengah masyarakat dengan membawa teladan akhlakul karimah. Dengan mengusung Kurikulum Berbasis Cinta (KBC) dan pembiasaan ibadah harian, madrasah terus berkomitmen untuk senantiasa melahirkan generasi yang Sehat, Hebat, dan Bermartabat."
                 },
 
                 infoTerkini: {
@@ -634,7 +631,7 @@
                                 { nama: "Buku pedoman BTQ Tarsana", putra: "Rp 30,000", putri: "Rp 30,000" },
                                 { nama: "Buku Rapor", putra: "Rp 150,000", putri: "Rp 150,000" },
                                 { nama: "SPP + Tabungan", putra: "Rp 265,000", putri: "Rp 265,000" },
-                                { nama: "Biaya gedung", putra: "Rp 500,000", putri: "Rp 500,000" }
+                                { nama: "Biaya gedung (DISKON 50%)", putra: "Rp 500,000", putri: "Rp 500,000" }
                             ]
                         },
                         {
@@ -696,35 +693,35 @@
 
                 alurPendaftaran: [
                     {
+                        langkah: "1",
                         judul: "Mengisi Formulir Pendaftaran",
-                        deskripsi: "Mengisi formulir pendaftaran secara langsung di sekretariat panitia PMBM.",
-                        icon: "fa-solid fa-file-signature"
+                        deskripsi: "Mengisi data diri calon murid baru secara online maupun offline melalui sekretariat PMBM."
                     },
                     {
+                        langkah: "2",
                         judul: "Membayar Biaya Pendaftaran",
-                        deskripsi: "Melakukan pembayaran biaya pokok pendaftaran sesuai dengan rincian yang telah ditetapkan.",
-                        icon: "fa-solid fa-money-bill-wave"
+                        deskripsi: "Melakukan pembayaran biaya administrasi pendaftaran awal sebesar yang telah ditentukan."
                     },
                     {
-                        judul: "Melengkapi Dokumen",
-                        deskripsi: "Menyerahkan kelengkapan berkas fisik syarat pendaftaran sebagai berikut:",
-                        dokumen: [
+                        langkah: "3",
+                        judul: "Melengkapi Dokumen Persyaratan",
+                        deskripsi: "Menyerahkan berkas kelengkapan administrasi:",
+                        subDokumen: [
                             "Fotokopi Ijazah / Surat Keterangan Lulus (SKL) SD/MI yang dilegalisir (2 lembar)",
                             "Fotokopi Akta Kelahiran & Kartu Keluarga (KK) (2 lembar)",
                             "Fotokopi NISN dan Rapor Kelas 5 - 6",
                             "Fotokopi KTP Orang tua/Wali"
-                        ],
-                        icon: "fa-solid fa-folder-open"
+                        ]
                     },
                     {
-                        judul: "Mengikuti Tes Seleksi",
-                        deskripsi: "Mengikuti seleksi masuk dan seleksi peminatan (khusus untuk jalur takhassus Tahfidz).",
-                        icon: "fa-solid fa-clipboard-question"
+                        langkah: "4",
+                        judul: "Mengikuti Seleksi Masuk",
+                        deskripsi: "Mengikuti tes seleksi masuk dan seleksi peminatan khusus (khusus untuk program Tahfidz)."
                     },
                     {
+                        langkah: "5",
                         judul: "Penempatan Kelas",
-                        deskripsi: "Pengumuman hasil akhir, pembagian seragam, dan penempatan ruangan kelas murid.",
-                        icon: "fa-solid fa-users-rectangle"
+                        deskripsi: "Pengumuman hasil seleksi dan penempatan kelas reguler atau kelas tahfidz."
                     }
                 ],
 
@@ -769,34 +766,30 @@
         }
     </script>
 
-    <!-- Promotional Pop-up Sticker Responsive -->
-    <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 w-48 sm:w-56 md:w-72 animate-pulse-badge origin-bottom-left group">
-        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-4 sm:p-5 md:p-6 rounded-2xl md:rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.3)] border-4 border-white text-center relative overflow-hidden transition-transform group-hover:scale-105 cursor-pointer" onclick="location.href='#biaya'">
-            <span class="inline-block bg-rose-600 text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase px-3 py-1.5 rounded-full mb-2 sm:mb-3 shadow-md tracking-wider">
-                <i class="fa-solid fa-fire mr-1 text-accent-400"></i> Promo Spesial
+    <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-40 w-48 sm:w-60 md:w-72 animate-pulse-badge">
+        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-3.5 sm:p-4 md:p-5 rounded-2xl shadow-2xl border-4 border-white text-center relative overflow-hidden">
+            <span class="inline-block bg-rose-600 text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase px-2.5 py-0.5 rounded-full mb-1.5 shadow-md tracking-wider">
+                <i class="fa-solid fa-fire mr-1 text-accent-400"></i> Promo Spesial PMBM
             </span>
             
-            <h4 class="font-heading font-black text-sm sm:text-base md:text-2xl text-primary-950 mb-1 md:mb-1.5 leading-tight drop-shadow-sm">
-                Hanya 2 Jutaan!
+            <h4 class="font-heading font-black text-sm sm:text-base md:text-xl text-primary-950 mb-1 leading-tight">
+                Biaya Hanya 2 Jutaan!
             </h4>
-            <p class="text-[9px] sm:text-[10px] md:text-sm font-bold text-primary-900 mb-3 md:mb-4">
-                Biaya Pendaftaran Terjangkau
+            <p class="text-[9px] sm:text-[10px] md:text-xs font-bold text-primary-900 mb-2">
+                Pendaftaran Terjangkau & Berkualitas
             </p>
             
-            <div class="bg-white p-2.5 sm:p-3 md:p-5 rounded-xl md:rounded-2xl border-b-4 border-r-4 border-gray-200/80 shadow-xl mb-4 relative overflow-hidden transform transition-all group-hover:-translate-y-1 group-hover:shadow-2xl">
-                <div class="absolute -right-3 -top-3 text-rose-100 opacity-40 text-6xl">
-                    <i class="fa-solid fa-percent"></i>
-                </div>
-                <p class="text-[8px] sm:text-[10px] md:text-xs font-extrabold text-rose-700 uppercase tracking-wide relative z-10 mb-1">
-                    <i class="fa-solid fa-tags mr-0.5"></i> Potongan Uang Gedung
+            <div class="bg-white/95 backdrop-blur-sm p-2 sm:p-2.5 md:p-3 rounded-xl border-2 border-white shadow-inner mb-3">
+                <p class="text-[8px] sm:text-[9px] md:text-[10px] font-extrabold text-rose-700 uppercase tracking-wide mb-0.5">
+                    <i class="fa-solid fa-tags mr-1"></i> Potongan Uang Gedung
                 </p>
-                <p class="text-2xl sm:text-3xl md:text-5xl font-black text-rose-600 relative z-10 drop-shadow-md tracking-tighter">
-                    50%
+                <p class="text-base sm:text-lg md:text-2xl font-black text-rose-600 drop-shadow-sm">
+                    SEBESAR 50%
                 </p>
             </div>
             
-            <a href="#biaya" class="inline-block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-2 md:py-3 px-3 rounded-xl text-[10px] sm:text-xs md:text-sm uppercase tracking-wider shadow-lg transition-all relative z-10">
-                Klaim Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
+            <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-2 px-3 rounded-xl text-[9px] sm:text-[10px] md:text-xs uppercase tracking-wider shadow-lg transition-all">
+                Cek Rincian Biaya <i class="fa-solid fa-arrow-right ml-1"></i>
             </a>
         </div>
     </div>
@@ -814,9 +807,13 @@
                                 <span x-text="sekolah.akreditasi"></span>
                             </span>
                         </div>
-                        <div class="flex items-center gap-1.5 text-xs text-primary-600 font-medium leading-none">
-                            <span>Sehat, Hebat, Bermartabat!</span>
-                            <span class="sticker-berkah text-sm">BERKAH</span>
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="text-xs text-primary-600 font-medium leading-none">Sehat, Hebat, Bermartabat!</span>
+                            <span class="sticker-berkah text-[10px]">BERKAH</span>
+                            <span class="sm:hidden inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-amber-300 leading-none ml-1">
+                                <i class="fa-solid fa-award text-amber-600"></i>
+                                <span x-text="sekolah.akreditasi"></span>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -863,7 +860,7 @@
                         <div x-show="dropdownInformasi" 
                              class="absolute top-full left-0 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 mt-1 z-50" x-cloak>
                             <a @click="dropdownInformasi = false" href="#info-terkini" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-bullhorn text-primary-600 w-5 mr-2"></i> Info Terkini</a>
-                            <a @click="dropdownInformasi = false" href="#alur" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-route text-primary-600 w-5 mr-2"></i> Alur Pendaftaran</a>
+                            <a @click="dropdownInformasi = false" href="#alur" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-clipboard-list text-primary-600 w-5 mr-2"></i> Alur Pendaftaran</a>
                             <a @click="dropdownInformasi = false" href="#jadwal" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-regular fa-calendar-days text-primary-600 w-5 mr-2"></i> Jadwal Pendaftaran</a>
                             <a @click="dropdownInformasi = false" href="#biaya" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 font-medium"><i class="fa-solid fa-receipt text-primary-600 w-5 mr-2"></i> Rincian Biaya</a>
                         </div>
@@ -929,10 +926,11 @@
         
         <div class="absolute inset-0 bg-primary-900/80 mix-blend-multiply"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/80 to-transparent opacity-90"></div>
-        
+
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             
             <div class="text-center max-w-4xl mx-auto mb-8">
+                <!-- Logos Header: Lembaga & Kemenag -->
                 <div class="flex items-center justify-center gap-6 mb-4">
                     <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
                         <img src="logo_mts.png" alt="Logo Lembaga" class="w-full h-full object-contain drop-shadow-md">
@@ -942,7 +940,7 @@
                         <h2 class="text-xl md:text-2xl font-heading font-black text-accent-400 drop-shadow-xl uppercase" x-text="hero.madrasah"></h2>
                     </div>
                     <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Logo_Kementerian_Agama_Republik_Indonesia.png" alt="Logo Kemenag" class="w-full h-full object-contain drop-shadow-md">
+                        <img src="logo-kemenag.png" alt="Logo Kemenag" class="w-full h-full object-contain drop-shadow-md">
                     </div>
                 </div>
 
@@ -961,7 +959,9 @@
                 <p class="text-xl md:text-2xl lg:text-3xl text-accent-400 font-black mb-4 tracking-wider mt-2 drop-shadow-lg" x-text="hero.subJudul"></p>
             </div>
             
-            <p class="text-sm md:text-base text-primary-100 font-medium mb-8 max-w-3xl mx-auto italic drop-shadow-md text-center" x-text="hero.tema"></p>
+            <div class="flex items-center justify-center gap-2 mb-8 flex-wrap text-center">
+                <span class="text-base md:text-lg text-primary-100 font-medium italic drop-shadow-md">Membentuk generasi <span class="sticker-berkah text-base mx-1">BERKAH</span> (bertaqwa, berprestasi, hidup sehat, kreatif, berakhlak mulia) Berbasis Cinta.</span>
+            </div>
             
             <div class="max-w-3xl mx-auto mb-8 bg-black/20 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md hidden md:block text-center">
                 <p class="text-3xl md:text-4xl text-accent-400 font-bold mb-4 leading-relaxed" dir="rtl" style="font-family: 'Traditional Arabic', 'Amiri', serif;" x-text="hero.mottoArab"></p>
@@ -1003,15 +1003,18 @@
             </div>
 
             <div class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-accent-400 via-amber-400 to-accent-500 border-2 border-amber-300 text-primary-950 text-base md:text-xl font-black tracking-wider shadow-2xl marquee-container">
-                <div class="marquee-content flex items-center gap-12">
-                    <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span> ✨ Sehat, Hebat, Bermartabat! <span class="sticker-berkah text-2xl ml-1">BERKAH</span></span>
-                    <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span> ✨ Sehat, Hebat, Bermartabat! <span class="sticker-berkah text-2xl ml-1">BERKAH</span></span>
+                <div class="marquee-content">
+                    <div class="flex items-center gap-12 shrink-0 pr-12">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span></span>
+                    </div>
+                    <div class="flex items-center gap-12 shrink-0 pr-12">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-rose-600 text-xl"></i> <span x-text="hero.pengumumanRuningText"></span></span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kolom Pimpinan & Pendiri Madrasah -->
     <section id="pimpinan" class="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-primary-100 border-b border-emerald-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1046,10 +1049,10 @@
                     <a href="#alur" class="bg-white/10 hover:bg-white/20 transition-all border border-white/20 p-5 rounded-2xl flex flex-col justify-between group">
                         <div>
                             <div class="w-10 h-10 rounded-xl bg-accent-400 text-primary-950 flex items-center justify-center text-lg font-bold mb-3 shadow">
-                                <i class="fa-solid fa-route"></i>
+                                <i class="fa-solid fa-clipboard-list"></i>
                             </div>
                             <h4 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-400 transition-colors">Alur Pendaftaran</h4>
-                            <p class="text-xs text-primary-200">Langkah & dokumen pendaftaran.</p>
+                            <p class="text-xs text-primary-200">Lihat tahapan & berkas yang disiapkan.</p>
                         </div>
                         <span class="mt-4 text-xs font-bold text-accent-400 inline-flex items-center gap-1">Pelajari <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
@@ -1080,7 +1083,6 @@
         </div>
     </section>
 
-    <!-- Info Terkini -->
     <section id="info-terkini" class="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-primary-100 border-b border-emerald-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1117,7 +1119,6 @@
         </div>
     </section>
 
-    <!-- Sambutan Kepsek -->
     <section id="sambutan" class="py-20 bg-gradient-to-tr from-amber-50/70 via-orange-50/30 to-white" x-data="{ bukaSambutan: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
@@ -1143,9 +1144,9 @@
                 </div>
 
                 <div class="w-full lg:w-3/5 mt-8 lg:mt-0">
-                    <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">
-                        <span>Sehat, Hebat, Bermartabat!</span>
-                        <span class="sticker-berkah text-base">BERKAH</span>
+                    <div class="flex items-center gap-2 mb-3 flex-wrap">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">Sehat, Hebat, Bermartabat!</span>
+                        <span class="sticker-berkah text-sm">BERKAH</span>
                     </div>
                     <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6" x-text="sambutan.judul"></h3>
                     
@@ -1169,7 +1170,6 @@
         </div>
     </section>
 
-    <!-- Visi Misi -->
     <section id="visimisi" class="py-20 bg-gradient-to-br from-slate-900 via-primary-950 to-teal-950 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-islamic opacity-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1217,7 +1217,6 @@
         </div>
     </section>
 
-    <!-- Sejarah Singkat -->
     <section id="sejarah" class="py-20 bg-gradient-to-b from-cyan-50/70 via-blue-50/40 to-white" x-data="{ bukaSejarah: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1248,7 +1247,7 @@
                             Seiring dengan berjalannya waktu, berkat kerja keras para pendiri, dewan guru, serta dukungan penuh dari masyarakat dan wali murid, MTs. Daarul Hikmah terus berkembang pesat. Berbagai sarana dan prasarana belajar yang representatif terus dibangun guna menciptakan suasana kegiatan belajar mengajar yang kondusif, nyaman, dan Islami.
                         </p>
                         <p>
-                            Hingga saat ini, MTs. Daarul Hikmah telah sukses mencetak ratusan lulusan berprestasi yang tersebar di berbagai jenjang pendidikan lanjutan, serta aktif berkontribusi di tengah masyarakat dengan membawa teladan akhlakul karimah. Dengan mengusung Kurikulum Berbasis Cinta (KBC) dan pembiasaan ibadah harian, madrasah terus berkomitmen untuk senantiasa melahirkan generasi yang Sehat, Hebat, Bermartabat! <span class="sticker-berkah text-base ml-0.5">BERKAH</span>
+                            Hingga saat ini, MTs. Daarul Hikmah telah sukses mencetak ratusan lulusan berprestasi yang tersebar di berbagai jenjang pendidikan lanjutan, serta aktif berkontribusi di tengah masyarakat dengan membawa teladan akhlakul karimah. Dengan mengusung Kurikulum Berbasis Cinta (KBC) dan pembiasaan ibadah harian, madrasah terus berkomitmen untuk senantiasa melahirkan generasi yang <span class="font-semibold text-cyan-900">Sehat, Hebat, Bermartabat! BERKAH</span>.
                         </p>
                         <div class="mt-8 text-center pt-4 border-t border-cyan-100">
                             <button aria-label="Tutup sejarah" @click="bukaSejarah = false" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-6 py-2.5 rounded-full text-sm inline-flex items-center gap-2 transition-all">
@@ -1261,7 +1260,6 @@
         </div>
     </section>
 
-    <!-- Program Unggulan -->
     <section id="unggulan" class="py-20 bg-gradient-to-br from-amber-100/60 via-yellow-50/40 to-orange-100/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1289,12 +1287,14 @@
         </div>
     </section>
 
-    <!-- Kenapa Harus ke MTs. Daarul Hikmah -->
     <section class="py-20 bg-gradient-to-br from-teal-900 via-primary-950 to-emerald-950 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-islamic opacity-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block bg-accent-400 text-primary-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow">Keunggulan Madrasah</span>
+                <div class="inline-flex items-center gap-1.5 bg-accent-400 text-primary-950 text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow">
+                    <span>Sehat, Hebat, Bermartabat!</span>
+                    <span class="sticker-berkah text-base">BERKAH</span>
+                </div>
                 <h3 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Kenapa Harus ke MTs. Daarul Hikmah?</h3>
                 <div class="h-1 w-20 bg-accent-400 mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-200 font-medium">Alasan kuat mengapa MTs Daarul Hikmah adalah pilihan terbaik untuk masa depan buah hati Anda.</p>
@@ -1364,11 +1364,13 @@
         </div>
     </section>
 
-    <!-- Kurikulum & Kelas -->
     <section id="kurikulum" class="py-20 bg-gradient-to-br from-purple-50/80 via-indigo-50/50 to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block bg-indigo-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Kurikulum & Kelas</span>
+                <div class="inline-flex items-center gap-1.5 bg-indigo-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">
+                    <span>Sehat, Hebat, Bermartabat!</span>
+                    <span class="sticker-berkah text-base">BERKAH</span>
+                </div>
                 <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4" x-text="judulKurikulum"></h3>
                 <div class="h-1 w-20 bg-accent-500 mx-auto rounded-full mb-6"></div>
                 <p class="text-gray-700 leading-relaxed font-medium" x-text="deskripsiKurikulum"></p>
@@ -1391,11 +1393,13 @@
         </div>
     </section>
 
-    <!-- Fasilitas Pendukung -->
     <section id="fasilitas" class="py-20 bg-gradient-to-tr from-emerald-50 via-teal-50/50 to-cyan-50/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block bg-emerald-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Sarana & Prasarana</span>
+                <div class="inline-flex items-center gap-1.5 bg-emerald-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">
+                    <span>Sehat, Hebat, Bermartabat!</span>
+                    <span class="sticker-berkah text-base">BERKAH</span>
+                </div>
                 <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4" x-text="judulFasilitas"></h3>
                 <div class="h-1 w-20 bg-accent-500 mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-700 font-medium" x-text="deskripsiFasilitas"></p>
@@ -1455,11 +1459,13 @@
         </div>
     </section>
 
-    <!-- Ekstrakurikuler -->
     <section id="ekskul" class="py-20 bg-gradient-to-bl from-rose-50/70 via-orange-50/40 to-amber-50/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block bg-rose-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Pengembangan Diri</span>
+                <div class="inline-flex items-center gap-1.5 bg-rose-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">
+                    <span>Sehat, Hebat, Bermartabat!</span>
+                    <span class="sticker-berkah text-base">BERKAH</span>
+                </div>
                 <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4" x-text="judulEkskul"></h3>
                 <div class="h-1 w-20 bg-accent-500 mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-700 font-medium" x-text="deskripsiEkskul"></p>
@@ -1490,6 +1496,7 @@
                 
                 <template x-if="selectedEkskul">
                     <div>
+                        <!-- Header Modal -->
                         <div class="bg-rose-800 text-white p-6 flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl bg-white/10 text-accent-400" :class="selectedEkskul.warna">
@@ -1505,9 +1512,11 @@
                             </button>
                         </div>
 
+                        <!-- Body Modal -->
                         <div class="p-6 md:p-8 space-y-6">
                             <p class="text-gray-600 text-sm md:text-base leading-relaxed" x-text="selectedEkskul.deskripsi"></p>
 
+                            <!-- Slider Foto Ekskul -->
                             <div class="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-inner group">
                                 <template x-for="(foto, fIdx) in selectedEkskul.fotos" :key="fIdx">
                                     <div x-show="selectedEkskul.activeSlide === fIdx"
@@ -1522,6 +1531,7 @@
                                     </div>
                                 </template>
 
+                                <!-- Tombol Navigasi Slider -->
                                 <button aria-label="Foto ekskul sebelumnya" @click="selectedEkskul.activeSlide = (selectedEkskul.activeSlide === 0) ? selectedEkskul.fotos.length - 1 : selectedEkskul.activeSlide - 1" 
                                         class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-colors focus:outline-none z-10">
                                     <i class="fa-solid fa-chevron-left text-xs"></i>
@@ -1541,6 +1551,7 @@
                             </div>
                         </div>
 
+                        <!-- Footer Modal -->
                         <div class="bg-gray-50 px-6 py-4 border-t border-gray-100 flex justify-end">
                             <button @click="modalEkskulOpen = false" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-xl text-sm font-semibold transition-colors">
                                 Tutup
@@ -1552,7 +1563,6 @@
         </div>
     </section>
 
-    <!-- Prestasi Murid -->
     <section id="prestasi" class="py-20 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 text-white" x-data="{ tabAktif: 'semua' }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -1578,23 +1588,19 @@
                          x-transition:enter="transition ease-out duration-300"
                          x-transition:enter-start="opacity-0 scale-95"
                          x-transition:enter-end="opacity-100 scale-100"
-                         class="bg-white rounded-3xl p-6 shadow-md border hover:shadow-xl transition-all flex flex-col h-full group"
-                         :class="item.warna.split(' ')[2]">
-                        
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm shrink-0" :class="item.warna.split(' ').slice(0,2).join(' ')">
-                                <i :class="item.icon"></i>
+                         class="bg-white/95 rounded-3xl p-6 border shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between group text-gray-900" :class="item.warna">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-gray-900 text-accent-400 shadow-sm flex items-center justify-center text-2xl">
+                                    <i :class="item.icon"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-800 shadow-sm" x-text="item.tahun"></span>
                             </div>
-                            <div>
-                                <span class="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded-md uppercase tracking-wider" x-text="item.tingkat"></span>
-                                <span class="block text-xs font-semibold text-primary-600 mt-1" x-text="item.tahun"></span>
-                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary-700 block mb-1" x-text="item.tingkat"></span>
+                            <h4 class="font-heading font-bold text-gray-900 text-lg mb-3 group-hover:text-primary-700 transition-colors" x-text="item.nama"></h4>
                         </div>
-                        
-                        <h4 class="font-heading font-bold text-gray-900 text-lg mb-2 flex-grow" x-text="item.nama"></h4>
-                        
-                        <div class="mt-auto pt-4 border-t border-gray-100">
-                            <p class="text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <div class="pt-4 border-t border-gray-200 mt-4">
+                            <p class="text-xs text-gray-700 font-semibold flex items-center gap-1.5">
                                 <i class="fa-solid fa-user-graduate text-primary-600"></i>
                                 <span x-text="item.pemenang"></span>
                             </p>
@@ -1605,45 +1611,37 @@
         </div>
     </section>
 
-    <!-- Alur Pendaftaran -->
     <section id="alur" class="py-20 bg-gradient-to-tr from-teal-50 via-primary-50 to-emerald-100/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block bg-teal-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Panduan</span>
+                <span class="inline-block bg-teal-700 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 shadow-sm">Tahapan Pendaftaran</span>
                 <h3 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">Alur Pendaftaran</h3>
                 <div class="h-1 w-20 bg-accent-500 mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-700 font-medium">Langkah-langkah beserta berkas dokumen yang perlu disiapkan oleh calon murid baru.</p>
+                <p class="text-gray-700 font-medium">Langkah-langkah mudah mendaftar sebagai murid baru MTs Daarul Hikmah.</p>
             </div>
 
-            <div class="max-w-4xl mx-auto">
-                <div class="space-y-8 relative before:absolute before:inset-0 before:left-6 before:-translate-x-1/2 before:h-full before:w-1 before:bg-teal-200">
-                    <template x-for="(step, index) in alurPendaftaran" :key="index">
-                        <div class="relative flex items-start gap-4 md:gap-6 group">
-                            <div class="w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center text-lg font-bold flex-shrink-0 shadow-lg relative z-10 border-4 border-teal-50 group-hover:scale-110 group-hover:bg-accent-500 group-hover:text-primary-950 transition-all" x-text="index + 1"></div>
+            <div class="max-w-4xl mx-auto relative">
+                <!-- Vertical Timeline Line -->
+                <div class="absolute left-6 md:left-8 top-8 bottom-8 w-1 bg-teal-200 hidden sm:block"></div>
+
+                <div class="space-y-6">
+                    <template x-for="(alur, index) in alurPendaftaran" :key="index">
+                        <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-teal-200 shadow-xl relative flex flex-col sm:flex-row items-start sm:items-center gap-6 group hover:border-teal-400 transition-all">
+                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-teal-700 text-white font-black text-xl md:text-2xl flex items-center justify-center shrink-0 shadow-lg relative z-10 group-hover:scale-110 transition-transform" x-text="alur.langkah"></div>
                             
-                            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-teal-100 shadow-lg flex-grow hover:shadow-xl transition-shadow">
-                                <div class="flex flex-col md:flex-row md:items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-lg shrink-0">
-                                        <i :class="step.icon"></i>
-                                    </div>
-                                    <h4 class="font-heading font-bold text-gray-900 text-xl" x-text="step.judul"></h4>
-                                </div>
-                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pl-0 md:pl-[3.25rem]" x-show="step.deskripsi" x-text="step.deskripsi"></p>
+                            <div class="flex-grow">
+                                <h4 class="font-heading font-bold text-xl text-gray-900 mb-2" x-text="alur.judul"></h4>
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed" x-text="alur.deskripsi"></p>
                                 
-                                <template x-if="step.dokumen">
-                                    <div class="mt-4 md:ml-[3.25rem] bg-teal-50/80 p-5 rounded-2xl border border-teal-100">
-                                        <h5 class="font-bold text-teal-900 text-sm mb-3 uppercase tracking-wider"><i class="fa-solid fa-paperclip mr-1.5"></i> Berkas yang disiapkan:</h5>
-                                        <ul class="space-y-2.5">
-                                            <template x-for="(doc, dIndex) in step.dokumen" :key="dIndex">
-                                                <li class="flex items-start gap-3 text-sm text-gray-700">
-                                                    <div class="w-5 h-5 rounded-full bg-teal-200 text-teal-700 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
-                                                        <i class="fa-solid fa-check"></i>
-                                                    </div>
-                                                    <span x-text="doc" class="font-medium leading-tight"></span>
-                                                </li>
-                                            </template>
-                                        </ul>
-                                    </div>
+                                <template x-if="alur.subDokumen">
+                                    <ul class="mt-4 space-y-2 bg-teal-50/70 p-4 rounded-2xl border border-teal-100">
+                                        <template x-for="(dok, dIdx) in alur.subDokumen" :key="dIdx">
+                                            <li class="flex items-start gap-2.5 text-sm text-gray-700 font-medium">
+                                                <i class="fa-solid fa-check text-teal-600 mt-1 shrink-0"></i>
+                                                <span x-text="dok"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
                                 </template>
                             </div>
                         </div>
@@ -1653,7 +1651,6 @@
         </div>
     </section>
 
-    <!-- Jadwal Pendaftaran -->
     <section id="jadwal" class="py-20 bg-gradient-to-bl from-sky-50 via-blue-50 to-indigo-100/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -1708,7 +1705,6 @@
         </div>
     </section>
 
-    <!-- Rincian Biaya -->
     <section id="biaya" class="py-20 bg-gradient-to-tr from-amber-50 via-orange-50/50 to-emerald-50/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1733,7 +1729,10 @@
                                 <template x-for="(item, rIndex) in kat.rincian" :key="rIndex">
                                     <div class="py-3 border-b border-gray-200/60 text-sm">
                                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                            <span class="font-semibold text-gray-800" x-text="item.nama"></span>
+                                            <span class="font-semibold text-gray-800 flex items-center gap-2 flex-wrap">
+                                                <span x-text="item.nama.replace(' (DISKON 50%)', '')"></span>
+                                                <span x-show="item.nama.includes('DISKON 50%')" class="bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow-sm tracking-wide animate-pulse">DISKON 50%</span>
+                                            </span>
                                             <div class="flex items-center gap-6 text-xs sm:text-sm">
                                                 <div class="flex items-center gap-1.5 bg-amber-50/80 px-3 py-1 rounded-lg border border-amber-200">
                                                     <span class="text-gray-500 font-normal">Putra:</span>
@@ -1792,7 +1791,6 @@
         </div>
     </section>
 
-    <!-- Galeri Kegiatan -->
     <section id="galeri" class="py-20 bg-gradient-to-br from-slate-900 via-teal-950 to-slate-950 text-white" x-data="{ 
         activeSlide: 0, 
         autoplayInterval: null,
@@ -1857,7 +1855,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="kontak" class="bg-gray-950 text-gray-300 pt-16 pb-8 border-t-4 border-primary-600 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
@@ -1924,12 +1921,6 @@
                             <a :href="kontak.igLink" target="_blank" class="hover:text-primary-400 transition-colors inline-flex items-center gap-2">
                                 <span x-text="kontak.namaInstagram"></span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
-                            </a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-envelope text-primary-400 text-lg"></i>
-                            <a :href="'mailto:' + kontak.email" class="hover:text-primary-400 transition-colors inline-flex items-center gap-2">
-                                <span x-text="kontak.email"></span>
                             </a>
                         </li>
                     </ul>
