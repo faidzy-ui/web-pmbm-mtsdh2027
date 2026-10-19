@@ -32,7 +32,7 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
-    <!-- Error Handler -->
+    <!-- Error Handler to suppress Alpine.js cancelled transition rejections -->
     <script>
         window.addEventListener('unhandledrejection', event => {
             if (event.reason && (event.reason.isFromCancelledTransition || (typeof event.reason === 'object' && event.reason !== null && 'isFromCancelledTransition' in event.reason))) {
@@ -151,23 +151,6 @@
             }
         }
 
-        function getVisitorCount() {
-            let count = localStorage.getItem('mts_daarulhikmah_visitors');
-            if (!count) {
-                count = 1;
-                localStorage.setItem('mts_daarulhikmah_visitors', count);
-            } else {
-                count = parseInt(count);
-            }
-            
-            if (!sessionStorage.getItem('visited_session')) {
-                count += 1;
-                localStorage.setItem('mts_daarulhikmah_visitors', count);
-                sessionStorage.setItem('visited_session', 'true');
-            }
-            return count.toLocaleString('id-ID');
-        }
-
         function websiteData() {
             return {
                 sekolah: {
@@ -190,6 +173,9 @@
                         "olahraga.jpeg",
                         "kopral_2.jpeg",
                         "maulid.jpeg",
+                        "kelas.jpeg",
+                        "kopral_3.jpeg",
+                        "paskibra.jpeg",
                         "tahfiz_1.jpeg"
                     ],
                     activeSlide: 0,
@@ -202,7 +188,7 @@
                     mottoArab: "المُحَافَظَةُ عَلَى القَدِيْمِ الصَّالِحِ وَالأَخْذُ بِالجَدِيْدِ الأَصْلَحِ",
                     mottoTerjemahan: "(Memelihara tradisi lama yang baik, dan mengambil hal baru yang lebih baik)",
                     tombolDaftar: "Hubungi Kami",
-                    pengumumanRuningText: "Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar tercepat! Pendaftaran Tahun Ajaran 2027/2028 Segera Dibuka!",
+                    pengumumanRuningText: "Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar pertama! Pendaftaran Tahun Ajaran 2027/2028 Segera Dibuka!",
                     tanggalLaunching: "2026-10-31T09:00:00"
                 },
 
@@ -362,7 +348,7 @@
                         warna: "text-blue-600 bg-blue-100",
                         activeSlide: 0,
                         fotos: [
-                            { url: "WhatsApp Image 2026-10-05 at 7.20.55 AM.jpg", caption: "Praktikum Komputer" },
+                            { url: "multimedia.jpg", caption: "Praktikum Komputer" },
                             { url: "https://placehold.co/800x450/2563eb/ffffff?text=Laboratorium+IPA", caption: "Alat Peraga Sains" }
                         ]
                     },
@@ -396,6 +382,7 @@
                         activeSlide: 0,
                         fotos: [
                             { url: "salat.jpeg", caption: "Menara & Kompleks Masjid Madrasah" },
+                             { url: "masjid1.jpeg", caption: "Menara & Kompleks Masjid Madrasah" },
                             { url: "btq.jpeg", caption: "Ruang Utama Sholat" }
                         ]
                     },
@@ -406,8 +393,8 @@
                         warna: "text-purple-600 bg-purple-100",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/7c3aed/ffffff?text=Aula+Serbaguna", caption: "Ruang Pertemuan Utama" },
-                            { url: "https://placehold.co/800x450/8b5cf6/ffffff?text=Acara+Seminar+Madrasah", caption: "Kegiatan Seminar & Wisuda" }
+                            { url: "aula.jpeg", caption: "Ruang Pertemuan Utama" },
+                            { url: "aula2", caption: "Kegiatan Rapat dan Sosialisasi" }
                         ]
                     },
                     { 
@@ -435,6 +422,7 @@
                         fotos: [
                             { url: "kopral_1.jpeg", caption: "Kegiatan Perkemahan & Baris Berbaris" },
                             { url: "pramuka_1.jpeg", caption: "Latihan Kepramukaan Rutin" },
+                            { url: "kopral_3.jpeg", caption: "Latihan Kepramukaan Rutin" },
                             { url: "kopral_2.jpeg", caption: "Kegiatan Kepanduan Pramuka" }
                         ]
                     },
@@ -445,7 +433,7 @@
                         deskripsi: "Melestarikan seni beladiri tradisional sekaligus membina prestasi membanggakan di tingkat nasional.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/dc2626/ffffff?text=Latihan+Pencak+Silat", caption: "Latihan Jurus & Fisik" },
+                            { url: "silat.jpeg", caption: "Latihan Jurus & Fisik" },
                             { url: "https://placehold.co/800x450/991b1b/ffffff?text=Kejuaraan+Silat", caption: "Kontingen Juara Nasional" }
                         ]
                     },
@@ -467,7 +455,7 @@
                         deskripsi: "Melatih kecepatan gerak, ketangkasan, dan fokus mental dalam bertanding bulu tangkis.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/059669/ffffff?text=Latihan+Badminton", caption: "Praktik Pukulan & Servis" }
+                            { url: "badminton1.jpeg", caption: "Latihan Rutin" }
                         ]
                     },
                     { 
@@ -487,7 +475,8 @@
                         deskripsi: "Mengenalkan dan melestarikan kekayaan seni tari tradisional dari berbagai daerah di Indonesia.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/db2777/ffffff?text=Tari+Nusantara", caption: "Latihan Gerak Tari Tradisional" }
+                            { url: "tari1.jpeg", caption: "Latihan Gerak Tari Tradisional" },
+                            { url: "tari2.jpeg", caption: "Tim Tari" }
                         ]
                     },
                     { 
@@ -497,7 +486,7 @@
                         deskripsi: "Mengasah kekompakan, ritme, dan keindahan gerak tari tradisional asal Aceh.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/4f46e5/ffffff?text=Ratoh+Jaroe", caption: "Penampilan Kolosal Ratoh Jaroe" }
+                            { url: "tari2.jpeg", caption: "Tim Tari" }
                         ]
                     },
                     { 
@@ -537,7 +526,7 @@
                         deskripsi: "Memupuk kebersamaan dan harmoni musik tradisional bambu nusantara.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/ca8a04/ffffff?text=Orkestra+Angklung", caption: "Latihan Harmoni Angklung" }
+                            { url: "angklung1.jpeg", caption: "Latihan Harmoni Angklung" }
                         ]
                     },
                     { 
@@ -547,7 +536,7 @@
                         deskripsi: "Melatih ketenangan jiwa, ketepatan fokus, dan sunnah Nabi Muhammad SAW.",
                         activeSlide: 0,
                         fotos: [
-                            { url: "https://placehold.co/800x450/e11d48/ffffff?text=Ekstrakurikuler+Panahan", caption: "Praktik Memanah di Lapangan" }
+                            { url: "panahan.jpeg", caption: "Praktik Memanah di Lapangan" }
                         ]
                     }
                 ],
@@ -735,7 +724,11 @@
                         { tipe: "foto", url: "btq.jpeg", caption: "Kegiatan Tuntas BTQ" },
                         { tipe: "foto", url: "olahraga2.jpeg", caption: "Kegiatan Olahraga & Senam Bersama" },
                         { tipe: "foto", url: "rapat.jpeg", caption: "Sosialisasi Program Madrasah Kepada Wali Murid" },
-                        { tipe: "foto", url: "belajar_1.jpeg", caption: "Pembelajaran dengan Multimedia" }
+                        { tipe: "foto", url: "kelas.jpeg", caption: "Raung Kelas yang Nyaman" },
+                        { tipe: "foto", url: "multimedia.jpeg", caption: "Pembelajaran dengan Multimedia" },
+                        { tipe: "video", url: "https://drive.google.com/file/d/1uIsaAbt0qYuwzEHxwAvbQ3b5hH1s339p/preview", caption: "Kegiatan Senam Bersama" },
+                        { tipe: "foto", url: "belajar_1.jpeg", caption: "Pembelajaran dengan Multimedia" },
+                        { tipe: "foto", url: "gemarikan.jpeg", caption: "Kegiatan Gemarikan bersama Kementerian Perikanan" }
                     ]
                 },
 
@@ -803,7 +796,23 @@
                 },
 
                 statistik: {
-                    totalPengunjung: getVisitorCount()
+                    totalPengunjung: "50"
+                },
+
+                initVisitorCounter() {
+                    fetch('https://api.counterapi.dev/v1/mtsdaarulhikmah/pmbm2027/up')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && typeof data.count === 'number') {
+                                const count = Math.max(50, data.count);
+                                this.statistik.totalPengunjung = count.toString();
+                            } else {
+                                this.statistik.totalPengunjung = "50";
+                            }
+                        })
+                        .catch(err => {
+                            this.statistik.totalPengunjung = "50";
+                        });
                 },
 
                 mobileMenuOpen: false,
@@ -814,38 +823,36 @@
         }
     </script>
 
-    <!-- Floating Promo Badge (Pojok Kiri Bawah & Lebih Kecil) -->
-    <div class="fixed bottom-20 left-3 z-40 w-28 sm:w-36 md:w-56 animate-pulse-badge">
-        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-2 sm:p-2.5 md:p-4 rounded-xl shadow-2xl border-2 border-white text-center relative overflow-hidden">
-            <span class="inline-block bg-rose-600 text-white text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase px-1.5 py-0.5 rounded-full mb-0.5 shadow-md tracking-wider">
+    <div class="fixed bottom-20 left-3 z-40 w-24 sm:w-32 md:w-44 animate-pulse-badge">
+        <div class="bg-gradient-to-br from-accent-400 via-amber-400 to-accent-500 text-primary-950 p-1.5 sm:p-2 md:p-3 rounded-xl shadow-2xl border-2 border-white text-center relative overflow-hidden">
+            <span class="inline-block bg-rose-600 text-white text-[6px] sm:text-[7px] md:text-[9px] font-black uppercase px-1 py-0.5 rounded-full mb-0.5 shadow-md tracking-wider">
                 <i class="fa-solid fa-fire mr-0.5 text-accent-400"></i> Promo
             </span>
             
-            <h4 class="font-heading font-black text-[11px] sm:text-xs md:text-base text-primary-950 mb-0.5 leading-tight">
-                Biaya Masuk Hanya 2 Jt-an!
+            <h4 class="font-heading font-black text-[10px] sm:text-[11px] md:text-xs text-primary-950 mb-0.5 leading-tight">
+                Biaya Masuk 2 Jt-an!
             </h4>
             
-            <div class="bg-white/95 backdrop-blur-sm p-1 sm:p-1.5 md:p-2 rounded-lg border border-white shadow-inner mb-1.5">
-                <p class="text-[6px] sm:text-[7px] md:text-[9px] font-extrabold text-rose-700 uppercase tracking-wide">
+            <div class="bg-white/95 backdrop-blur-sm p-1 rounded-lg border border-white shadow-inner mb-1">
+                <p class="text-[5px] sm:text-[6px] md:text-[8px] font-extrabold text-rose-700 uppercase tracking-wide">
                     Diskon Uang Gedung
                 </p>
-                <p class="text-xs sm:text-sm md:text-lg font-black text-rose-700 drop-shadow-sm">
+                <p class="text-[11px] sm:text-xs md:text-base font-black text-rose-700 drop-shadow-sm">
                     50%
                 </p>
             </div>
             
-            <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-1 px-1.5 rounded-lg text-[7px] sm:text-[8px] md:text-[10px] uppercase tracking-wider shadow transition-all">
+            <a href="#biaya" class="block w-full bg-primary-900 hover:bg-primary-950 text-white font-bold py-0.5 px-1 rounded-lg text-[6px] sm:text-[7px] md:text-[9px] uppercase tracking-wider shadow transition-all">
                 Cek Biaya <i class="fa-solid fa-arrow-right ml-0.5"></i>
             </a>
         </div>
     </div>
 
-    <!-- Floating Visitor Counter (Pojok Kanan Bawah) -->
-    <div class="fixed bottom-20 right-3 z-40">
+    <div class="fixed bottom-20 right-3 z-40" x-init="initVisitorCounter()">
         <div class="bg-gray-900/90 hover:bg-gray-900 text-gray-200 px-3 py-2 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex items-center gap-2 text-[10px] sm:text-xs font-medium">
             <i class="fa-solid fa-users text-primary-400 text-sm animate-pulse"></i>
             <div class="flex flex-col">
-                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Pengunjung</span>
+                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Pengunjung Global</span>
                 <span class="font-black text-accent-400 text-xs sm:text-sm" x-text="statistik.totalPengunjung"></span>
             </div>
         </div>
