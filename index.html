@@ -233,8 +233,8 @@
                             tanggal: "05 November 2026", 
                             tglUnggah: "Diunggah pada 20 Oktober 2026",
                             judul: "Launching PMBM", 
-                            ringkasan: "Pembukaan resmi pendaftaran murid baru. Kuota voucher diskon terbatas akan dibagikan kepada pendaftar pertama pada hari tersebut.", 
-                            lengkap: "Pembukaan resmi pendaftaran murid baru tahun ajaran 2027/2028. Hadiri launching PMBM dan dapatkan voucher diskon eksklusif bagi pendaftar pertama. Pada momen grand launching ini, pihak yayasan dan panitia PMBM akan membagikan voucher diskon khusus biaya pendaftaran secara terbatas bagi pendaftar tercepat. Pastikan Anda bersiap dan mendaftar tepat waktu!",
+                            ringkasan: "Pembukaan resmi pendaftaran murid baru. Kuota voucher diskon terbatas akan dibagikan kepada pembeli formulir pendaftaran pada hari tersebut.", 
+                            lengkap: "Pembukaan resmi pendaftaran murid baru tahun ajaran 2027/2028. Hadiri launching PMBM dan dapatkan voucher diskon eksklusif Bebas Biaya Gedung 100% bagi pendaftar dan membeli uang formulir pada hari tersebut. Pada momen grand launching ini, pihak MTs dan panitia PMBM akan membagikan voucher diskon khusus biaya pendaftaran secara terbatas bagi pendaftar tercepat. Pastikan Anda bersiap dan mendaftar tepat waktu!",
                             icon: "fa-solid fa-rocket", 
                             warna: "text-rose-600 bg-rose-100",
                             buka: false 
@@ -253,7 +253,7 @@
                             tanggal: "21 Oktober 2026", 
                             tglUnggah: "Diunggah pada 20 Oktober 2026",
                             judul: "Layanan Konsultasi Dibuka", 
-                            ringkasan: "Hubungi admin kami jika Anda memiliki kendala teknis atau pertanyaan mengenai kurikulum dan program asrama/tahfidz.", 
+                            ringkasan: "Hubungi admin kami jika Anda memiliki pertanyaan mengenai informasi pendaftaran dan program madrasah.", 
                             lengkap: "Tim panitia PMBM MTs Daarul Hikmah siap melayani pertanyaan seputar alur pendaftaran, pilihan kelas reguler atau takhassus tahfidz, serta jadwal tes seleksi. Silakan hubungi nomor kontak admin WhatsApp yang tertera di bagian bawah website.",
                             icon: "fa-brands fa-whatsapp", 
                             warna: "text-blue-600 bg-blue-100",
@@ -382,7 +382,7 @@
                         activeSlide: 0,
                         fotos: [
                             { url: "salat.jpeg", caption: "Menara & Kompleks Masjid Madrasah" },
-                             { url: "masjid1.jpeg", caption: "Menara & Kompleks Masjid Madrasah" },
+                            { url: "masjid1.jpeg", caption: "Menara & Kompleks Masjid Madrasah" },
                             { url: "btq.jpeg", caption: "Ruang Utama Sholat" }
                         ]
                     },
@@ -804,7 +804,8 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data && typeof data.count === 'number') {
-                                const count = Math.max(50, data.count);
+                                // Menambahkan 50 dengan jumlah visit asli agar langsung terlihat perubahannya
+                                const count = 50 + data.count;
                                 this.statistik.totalPengunjung = count.toString();
                             } else {
                                 this.statistik.totalPengunjung = "50";
@@ -829,9 +830,13 @@
                 <i class="fa-solid fa-fire mr-0.5 text-accent-400"></i> Promo
             </span>
             
-            <h4 class="font-heading font-black text-[10px] sm:text-[11px] md:text-xs text-primary-950 mb-0.5 leading-tight">
-                Biaya Masuk 2 Jt-an!
+            <h4 class="font-heading font-black text-[10px] sm:text-[11px] md:text-xs text-primary-950 leading-tight">
+                Biaya Masuk 2 Jt-an!*
             </h4>
+            
+            <p class="text-[4.5px] sm:text-[5.5px] md:text-[7px] leading-tight text-primary-950 font-bold mt-0.5 mb-1.5 px-0.5 text-center italic drop-shadow-sm">
+                *Belum termasuk biaya seragam & kegiatan 1 tahun
+            </p>
             
             <div class="bg-white/95 backdrop-blur-sm p-1 rounded-lg border border-white shadow-inner mb-1">
                 <p class="text-[5px] sm:text-[6px] md:text-[8px] font-extrabold text-rose-700 uppercase tracking-wide">
@@ -852,7 +857,7 @@
         <div class="bg-gray-900/90 hover:bg-gray-900 text-gray-200 px-3 py-2 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex items-center gap-2 text-[10px] sm:text-xs font-medium">
             <i class="fa-solid fa-users text-primary-400 text-sm animate-pulse"></i>
             <div class="flex flex-col">
-                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Pengunjung Global</span>
+                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Jumlah Pengunjung Saat Ini</span>
                 <span class="font-black text-accent-400 text-xs sm:text-sm" x-text="statistik.totalPengunjung"></span>
             </div>
         </div>
