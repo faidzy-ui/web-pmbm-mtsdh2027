@@ -800,19 +800,35 @@
                 },
 
                 initVisitorCounter() {
-                    fetch('https://api.counterapi.dev/v1/mtsdaarulhikmah/pmbm2027/up')
-                        .then(response => response.json())
+                    // Ambil data lokal sebagai cadangan jika API diblokir
+                    let localCount = localStorage.getItem('pmbm_visitor_count');
+                    localCount = localCount ? parseInt(localCount) : 50;
+
+                    // Gunakan opsi cache: 'no-store' agar browser HP tidak me-load data lama
+                    fetch('https://api.counterapi.dev/v1/mtsdaarulhikmah/pmbm2027/up', { 
+                        method: 'GET',
+                        cache: 'no-store' 
+                    })
+                        .then(response => {
+                            if (!response.ok) throw new Error('API Error');
+                            return response.json();
+                        })
                         .then(data => {
                             if (data && typeof data.count === 'number') {
-                                // Menambahkan 50 dengan jumlah visit asli agar langsung terlihat perubahannya
                                 const count = 50 + data.count;
                                 this.statistik.totalPengunjung = count.toString();
+                                // Simpan angka asli dari server ke penyimpanan lokal hp
+                                localStorage.setItem('pmbm_visitor_count', count.toString());
                             } else {
-                                this.statistik.totalPengunjung = "50";
+                                throw new Error('Format respons salah');
                             }
                         })
                         .catch(err => {
-                            this.statistik.totalPengunjung = "50";
+                            console.warn("API Counter gagal/terblokir (mungkin karena AdBlock/Cache/Offline). Menggunakan fallback lokal.");
+                            // Jika API gagal (misal diblokir browser), gunakan simulasi lokal agar angka tetap naik
+                            localCount += 1;
+                            this.statistik.totalPengunjung = localCount.toString();
+                            localStorage.setItem('pmbm_visitor_count', localCount.toString());
                         });
                 },
 
