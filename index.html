@@ -795,43 +795,6 @@
                     igLink: "https://instagram.com/mts.daarulhikmah"
                 },
 
-                statistik: {
-                    totalPengunjung: "50"
-                },
-
-                initVisitorCounter() {
-                    // Ambil data lokal sebagai cadangan jika API diblokir
-                    let localCount = localStorage.getItem('pmbm_visitor_count');
-                    localCount = localCount ? parseInt(localCount) : 50;
-
-                    // Gunakan opsi cache: 'no-store' agar browser HP tidak me-load data lama
-                    fetch('https://api.counterapi.dev/v1/mtsdaarulhikmah/pmbm2027/up', { 
-                        method: 'GET',
-                        cache: 'no-store' 
-                    })
-                        .then(response => {
-                            if (!response.ok) throw new Error('API Error');
-                            return response.json();
-                        })
-                        .then(data => {
-                            if (data && typeof data.count === 'number') {
-                                const count = 50 + data.count;
-                                this.statistik.totalPengunjung = count.toString();
-                                // Simpan angka asli dari server ke penyimpanan lokal hp
-                                localStorage.setItem('pmbm_visitor_count', count.toString());
-                            } else {
-                                throw new Error('Format respons salah');
-                            }
-                        })
-                        .catch(err => {
-                            console.warn("API Counter gagal/terblokir (mungkin karena AdBlock/Cache/Offline). Menggunakan fallback lokal.");
-                            // Jika API gagal (misal diblokir browser), gunakan simulasi lokal agar angka tetap naik
-                            localCount += 1;
-                            this.statistik.totalPengunjung = localCount.toString();
-                            localStorage.setItem('pmbm_visitor_count', localCount.toString());
-                        });
-                },
-
                 mobileMenuOpen: false,
                 dropdownProfil: false,
                 dropdownProgram: false,
@@ -869,13 +832,10 @@
         </div>
     </div>
 
-    <div class="fixed bottom-20 right-3 z-40" x-init="initVisitorCounter()">
-        <div class="bg-gray-900/90 hover:bg-gray-900 text-gray-200 px-3 py-2 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex items-center gap-2 text-[10px] sm:text-xs font-medium">
-            <i class="fa-solid fa-users text-primary-400 text-sm animate-pulse"></i>
-            <div class="flex flex-col">
-                <span class="text-[8px] uppercase tracking-wider text-gray-400 leading-none">Jumlah Pengunjung Saat Ini</span>
-                <span class="font-black text-accent-400 text-xs sm:text-sm" x-text="statistik.totalPengunjung"></span>
-            </div>
+    <div class="fixed bottom-20 right-3 z-40">
+        <div class="bg-gray-900/90 hover:bg-gray-900 px-3 py-2.5 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex flex-col items-center gap-1.5 transition-all">
+            <span class="text-[8px] sm:text-[9px] uppercase tracking-widest text-gray-300 font-bold leading-none">Pengunjung</span>
+            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fpmbm-daarulhikmah.netlify.app&count_bg=%23eab308&title_bg=%2314532d&title=Total&edge_flat=false" alt="Total Pengunjung" class="h-5 sm:h-6 rounded shadow-sm">
         </div>
     </div>
 
@@ -2055,6 +2015,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
