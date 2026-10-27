@@ -835,7 +835,11 @@
     <div class="fixed bottom-20 right-3 z-40">
         <div class="bg-gray-900/90 hover:bg-gray-900 px-3 py-2.5 rounded-xl shadow-2xl border border-gray-700 backdrop-blur-md flex flex-col items-center gap-1.5 transition-all">
             <span class="text-[8px] sm:text-[9px] uppercase tracking-widest text-gray-300 font-bold leading-none">Pengunjung</span>
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fpmbm-daarulhikmah.netlify.app&count_bg=%23eab308&title_bg=%2314532d&title=Total&edge_flat=false" alt="Total Pengunjung" class="h-5 sm:h-6 rounded shadow-sm">
+            <!-- Sistem Anti-Gagal: Memanggil server pertama, jika error otomatis memanggil server kedua -->
+            <img src="https://api.visitorbadge.io/api/visitors?path=pmbm-daarulhikmah-mts&label=TOTAL&labelColor=%2314532d&countColor=%23eab308" 
+                 onerror="this.onerror=null; this.src='https://komarev.com/ghpvc/?username=pmbm-daarulhikmah-mts&label=TOTAL&color=yellow&style=flat';" 
+                 alt="Total Pengunjung" 
+                 class="h-5 sm:h-6 rounded shadow-sm">
         </div>
     </div>
 
